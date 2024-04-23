@@ -1,74 +1,57 @@
 package com.movil.vinilosapp.viewModel
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.movil.vinilosapp.models.dto.AlbumDto
-import com.movil.vinilosapp.models.repository.VinilosRepository
-import com.movil.vinilosapp.VinilosApplication
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.initializer
-import androidx.lifecycle.viewmodel.viewModelFactory
 
-import androidx.compose.runtime.mutableStateOf
+class AlbumViewModel(application: Application) :  AndroidViewModel(application) {
 
-sealed interface AlbumUiState {
-    data class Success(val albums: List<AlbumDto>) : AlbumUiState
-    object Error : AlbumUiState
-    object Loading : AlbumUiState
-}
+    private val _albums = MutableLiveData<List<AlbumDto>>()
 
-class AlbumViewModel(private val albumRepository: VinilosRepository): ViewModel() {
+    val albums: LiveData<List<AlbumDto>>
+        get() = _albums
 
-    var albumUiState: AlbumUiState by mutableStateOf(AlbumUiState.Loading)
+    private var _eventNetworkError = MutableLiveData<Boolean>(false)
 
-    private var dataLoaded = false
+    val eventNetworkError: LiveData<Boolean>
+        get() = _eventNetworkError
+
+    private var _isNetworkErrorShown = MutableLiveData<Boolean>(false)
+
+    val isNetworkErrorShown: LiveData<Boolean>
+        get() = _isNetworkErrorShown
 
     init {
-        getAllAlbums()
+        refreshDataFromNetwork()
     }
 
-    private fun getAllAlbums() {
+    private fun refreshDataFromNetwork() {
+        NetworkServiceAdapter.getInstance(getApplication()).getAlbums({
+            _albums.postValue(it)
+            _eventNetworkError.value = false
+            _isNetworkErrorShown.value = false
+        },{
+            _eventNetworkError.value = true
+        })
+    }
 
-        if (dataLoaded) {
-            return
-        }
+    fun onNetworkErrorShown() {
+        _isNetworkErrorShown.value = true
+    }
 
-        viewModelScope.launch {
-
-            try {
-                albumRepository.getAlbums(
-                    onResponse = {
-                            albumList -> albumUiState = AlbumUiState.Success(albumList)
-                    },
-                    onFailure = {
-                        albumUiState = AlbumUiState.Error
-                    })
-            } catch (e: Exception) {
-                albumUiState = AlbumUiState.Error
+    class Factory(val app: Application) : ViewModelProvider.Factory {
+        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            if (modelClass.isAssignableFrom(AlbumViewModel::class.java)) {
+                @Suppress("UNCHECKED_CAST")
+                return AlbumViewModel(app) as T
             }
-
-        } // End viewModelScope
-
-    } // End getAllAlbums
-
-    fun refreshAlbums() {
-        albumUiState = AlbumUiState.Loading
-        dataLoaded = false
-        getAllAlbums()
-    } // End refreshAlbums
-
-    companion object {
-        private var instance: AlbumViewModel? = null
-
-        val Factory: ViewModelProvider.Factory = viewModelFactory {
-            initializer {
-                val application = (this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as VinilosApplication)
-                val vinilosRepository = application.vinilosRepository
-                AlbumViewModel(albumRepository = vinilosRepository)
-                instance ?: AlbumViewModel(albumRepository = vinilosRepository).also { instance = it }
-            }
+            throw IllegalArgumentException("Unable to construct viewmodel")
         }
-    } // End object
+    }
 
 } // End class
