@@ -7,10 +7,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.vinilosapp.models.Collector
-import com.example.vinilosapp.network.NetworkServiceAdapter
+import com.example.vinilosapp.repository.CollectorRepository
 
 class CollectorViewModel(application: Application) :  AndroidViewModel(application) {
 
+    private val collectorRepository = CollectorRepository(application)
     private val _collectors = MutableLiveData<List<Collector>>()
 
     val collectors: LiveData<List<Collector>>
@@ -31,7 +32,7 @@ class CollectorViewModel(application: Application) :  AndroidViewModel(applicati
     }
 
     private fun refreshDataFromNetwork() {
-        NetworkServiceAdapter.getInstance(getApplication()).getCollectors({
+        collectorRepository.refreshData({
             _collectors.postValue(it)
             _eventNetworkError.value = false
             _isNetworkErrorShown.value = false
@@ -45,7 +46,7 @@ class CollectorViewModel(application: Application) :  AndroidViewModel(applicati
     }
 
     class Factory(val app: Application) : ViewModelProvider.Factory {
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(CollectorViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
                 return CollectorViewModel(app) as T
