@@ -1,4 +1,4 @@
-package com.example.vinilosapp.ui.adapters
+package com.example.vinilosapp.view.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilosapp.R
 import com.example.vinilosapp.databinding.AlbumItemBinding
 import com.example.vinilosapp.models.Album
-import com.example.vinilosapp.ui.AlbumFragmentDirections
+import com.example.vinilosapp.view.AlbumFragmentDirections
 
 class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
     var albums :List<Album> = emptyList()

@@ -1,4 +1,4 @@
-package com.example.vinilosapp.ui
+package com.example.vinilosapp.view
 
 import android.os.Bundle
 import android.util.Log
