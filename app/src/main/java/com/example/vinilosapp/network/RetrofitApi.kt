@@ -25,7 +25,7 @@ interface RetrofitApiService {
             Call<List<Album>>
 
     @GET("albums/{albumId}/comments")
-    fun getComments(@Path("albumId") ambumId : Int):
+    fun getComments(@Path("albumId") albumId : Int):
             Call<List<Comment>>
 
 
