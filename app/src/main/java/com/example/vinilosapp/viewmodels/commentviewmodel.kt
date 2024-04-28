@@ -1,16 +1,18 @@
 package com.example.vinilosapp.viewmodels
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.vinilosapp.models.Comment
-import com.example.vinilosapp.network.NetworkServiceAdapter
+import com.example.vinilosapp.repository.CommentRepository
 
 class CommentViewModel(application: Application, albumId: Int) :  AndroidViewModel(application) {
 
+    private val commentRepository = CommentRepository(application)
     private val _comments = MutableLiveData<List<Comment>>()
     val id:Int = albumId
 
@@ -32,11 +34,12 @@ class CommentViewModel(application: Application, albumId: Int) :  AndroidViewMod
     }
 
     private fun refreshDataFromNetwork() {
-        NetworkServiceAdapter.getInstance(getApplication()).getComments(id,{
+        commentRepository.refreshData(id, {
             _comments.postValue(it)
             _eventNetworkError.value = false
             _isNetworkErrorShown.value = false
         },{
+            Log.d("Error", it.toString())
             _eventNetworkError.value = true
         })
     }
@@ -45,8 +48,8 @@ class CommentViewModel(application: Application, albumId: Int) :  AndroidViewMod
         _isNetworkErrorShown.value = true
     }
 
-    class Factory(val app: Application, val albumId: Int) : ViewModelProvider.Factory {
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    class Factory constructor(val app: Application, val albumId: Int) : ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(CommentViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
                 return CommentViewModel(app, albumId) as T

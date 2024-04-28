@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/page_inicio"
+        android:icon="@drawable/icon_inicio"
+        android:title="Inicio" />
+
+    <item
+        android:id="@+id/albumsRv"
+        android:icon="@drawable/icon_albumes"
+        android:title="Álbumes" />
+
+    <item
+        android:id="@+id/coleccionistas"
+        android:icon="@drawable/icon_coleccionistas"
+        android:title="Coleccionistas" />
+
+</menu>

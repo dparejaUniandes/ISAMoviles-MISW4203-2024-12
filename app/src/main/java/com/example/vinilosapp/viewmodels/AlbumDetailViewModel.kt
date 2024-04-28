@@ -9,13 +9,14 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.vinilosapp.models.Album
 import com.example.vinilosapp.repository.AlbumRepository
 
-class AlbumViewModel(application: Application) :  AndroidViewModel(application) {
+class AlbumDetailViewModel(application: Application, albumId: Int) :  AndroidViewModel(application) {
 
     private val albumRepository = AlbumRepository(application)
-    private val _albums = MutableLiveData<List<Album>>()
+    private val _album = MutableLiveData<Album>()
+    val id:Int = albumId
 
-    val albums: LiveData<List<Album>>
-        get() = _albums
+    val album: LiveData<Album>
+        get() = _album
 
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
 
@@ -32,8 +33,8 @@ class AlbumViewModel(application: Application) :  AndroidViewModel(application) 
     }
 
     private fun refreshDataFromNetwork() {
-        albumRepository.refreshData({
-            _albums.postValue(it)
+        albumRepository.refreshData(id, {
+            _album.postValue(it)
             _eventNetworkError.value = false
             _isNetworkErrorShown.value = false
         },{
@@ -45,11 +46,11 @@ class AlbumViewModel(application: Application) :  AndroidViewModel(application) 
         _isNetworkErrorShown.value = true
     }
 
-    class Factory(val app: Application) : ViewModelProvider.Factory {
+    class Factory(val app: Application, val albumId: Int) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(AlbumViewModel::class.java)) {
+            if (modelClass.isAssignableFrom(AlbumDetailViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
-                return AlbumViewModel(app) as T
+                return AlbumDetailViewModel(app, albumId) as T
             }
             throw IllegalArgumentException("Unable to construct viewmodel")
         }

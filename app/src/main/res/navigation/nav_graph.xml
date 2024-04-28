@@ -5,18 +5,39 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/albumFragment">
     <fragment
+        android:id="@+id/page_inicio"
+        android:name="com.example.vinilosapp.view.InicioFragment"
+        android:label="Inicio"
+        tools:layout="@layout/fragment_inicio" >
+    </fragment>
+    <fragment
         android:id="@+id/albumFragment"
-        android:name="com.example.vinilosapp.ui.AlbumFragment"
-        android:label="album_fragment"
+        android:name="com.example.vinilosapp.view.AlbumFragment"
+        android:label="Álbumes"
         tools:layout="@layout/album_fragment" >
+        <action
+            android:id="@+id/action_albumFragment_to_albumDetailFragment"
+            app:destination="@id/albumDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/albumDetailFragment"
+        android:name="com.example.vinilosapp.view.AlbumDetailFragment"
+        android:label="Detalle Álbum"
+        tools:layout="@layout/album_detail_fragment" >
+        <argument
+            android:name="albumId"
+            app:argType="integer" />
         <action
             android:id="@+id/action_albumFragment_to_commentFragment"
             app:destination="@id/commentFragment" />
+        <action
+            android:id="@+id/action_albumDetailFragment_to_albumFragment"
+            app:destination="@id/albumFragment" />
     </fragment>
     <fragment
         android:id="@+id/commentFragment"
-        android:name="com.example.vinilosapp.ui.CommentFragment"
-        android:label="comment_fragment"
+        android:name="com.example.vinilosapp.view.CommentFragment"
+        android:label="Comentarios"
         tools:layout="@layout/comment_fragment" >
         <argument
             android:name="albumId"

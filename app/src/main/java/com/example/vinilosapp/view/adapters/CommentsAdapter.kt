@@ -1,4 +1,4 @@
-package com.example.vinilosapp.ui.adapters
+package com.example.vinilosapp.view.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

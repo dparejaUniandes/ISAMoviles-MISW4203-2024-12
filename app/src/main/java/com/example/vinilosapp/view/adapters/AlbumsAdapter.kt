@@ -1,4 +1,4 @@
-package com.example.vinilosapp.ui.adapters
+package com.example.vinilosapp.view.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilosapp.R
 import com.example.vinilosapp.databinding.AlbumItemBinding
 import com.example.vinilosapp.models.Album
-import com.example.vinilosapp.ui.AlbumFragmentDirections
+import com.example.vinilosapp.view.AlbumFragmentDirections
 
 class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
     var albums :List<Album> = emptyList()
@@ -39,7 +39,7 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
             it.album = albums[position]
         }
         holder.viewDataBinding.root.setOnClickListener {
-            val action = AlbumFragmentDirections.actionAlbumFragmentToCommentFragment(albums[position].albumId)
+            val action = AlbumFragmentDirections.actionAlbumFragmentToAlbumDetailFragment(albums[position].albumId)
             // Navigate using that action
             holder.viewDataBinding.root.findNavController().navigate(action)
         }

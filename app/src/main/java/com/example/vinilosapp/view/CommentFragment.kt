@@ -1,4 +1,4 @@
-package com.example.vinilosapp.ui
+package com.example.vinilosapp.view
 
 import android.os.Bundle
 import android.util.Log
@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilosapp.R
 import com.example.vinilosapp.databinding.CommentFragmentBinding
 import com.example.vinilosapp.models.Comment
-import com.example.vinilosapp.ui.adapters.CommentsAdapter
+import com.example.vinilosapp.view.adapters.CommentsAdapter
 import com.example.vinilosapp.viewmodels.CommentViewModel
 
 /**
