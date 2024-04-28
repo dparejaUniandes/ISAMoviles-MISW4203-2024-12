@@ -10,4 +10,7 @@ interface AlbumService {
     @GET("albums")
     fun getAlbums():
             Call<List<Album>>
+    @GET("albums/{albumId}")
+    fun getAlbum(@Path("albumId") albumId : Int):
+            Call<Album>
 }

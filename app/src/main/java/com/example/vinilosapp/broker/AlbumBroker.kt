@@ -33,4 +33,20 @@ class AlbumBroker constructor(context: Context) {
                 }
             })
     }
+
+    fun getAlbum(albumId : (Int), onResponse:(resp:Album)->Unit, onFailure:(resp:String)->Unit) {
+        var r = VinilosApi.albumService.getAlbum(albumId)
+        var p = r.enqueue(
+            object : Callback<Album> {
+                override fun onFailure(call: Call<Album>, t: Throwable) {
+                    onFailure(t.message!!)
+                }
+
+                override fun onResponse(call: Call<Album>, response: retrofit2.Response<Album>) {
+                    Log.d("Body Album", response.body().toString())
+                    onResponse(response.body()!!)
+
+                }
+            })
+    }
 }

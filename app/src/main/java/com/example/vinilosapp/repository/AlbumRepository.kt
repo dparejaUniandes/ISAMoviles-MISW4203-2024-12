@@ -12,4 +12,14 @@ class AlbumRepository(val application: Application){
             onFailure
         )
     }
+
+    fun refreshData(albumId: (Int), callback: (Album)->Unit, onFailure: (String)->Unit) {
+        AlbumBroker.getInstance(application).getAlbum(
+            albumId,
+            {
+            callback(it)
+            },
+            onFailure
+        )
+    }
 }
