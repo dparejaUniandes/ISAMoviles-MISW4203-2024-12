@@ -55,7 +55,6 @@ class AlbumDetailFragment : Fragment() {
         val activity = requireNotNull(this.activity) {
             "You can only access the viewModel after onActivityCreated()"
         }
-        activity.actionBar?.title = getString(R.string.title_albums)
         val args: AlbumDetailFragmentArgs by navArgs()
         Log.d("Args", args.albumId.toString())
         viewModel = ViewModelProvider(this, AlbumDetailViewModel.Factory(activity.application, args.albumId)).get(
@@ -66,6 +65,7 @@ class AlbumDetailFragment : Fragment() {
                     val binding : AlbumDetailItemBinding =
                         DataBindingUtil.setContentView(activity, R.layout.album_detail_item)
                     binding.album = this
+                    activity.actionBar?.title = this.name
                 }
             }
         })
