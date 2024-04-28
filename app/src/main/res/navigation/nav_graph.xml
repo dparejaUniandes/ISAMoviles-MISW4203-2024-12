@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/albumFragment"
         android:name="com.example.vinilosapp.view.AlbumFragment"
-        android:label="album_fragment"
+        android:label="Álbumes"
         tools:layout="@layout/album_fragment" >
         <action
             android:id="@+id/action_albumFragment_to_albumDetailFragment"
@@ -16,7 +16,7 @@
     <fragment
         android:id="@+id/albumDetailFragment"
         android:name="com.example.vinilosapp.view.AlbumDetailFragment"
-        android:label="comment_fragment"
+        android:label="Detalle Álbum"
         tools:layout="@layout/album_detail_fragment" >
         <argument
             android:name="albumId"
@@ -28,7 +28,7 @@
     <fragment
         android:id="@+id/commentFragment"
         android:name="com.example.vinilosapp.view.CommentFragment"
-        android:label="comment_fragment"
+        android:label="Comentarios"
         tools:layout="@layout/comment_fragment" >
         <argument
             android:name="albumId"
