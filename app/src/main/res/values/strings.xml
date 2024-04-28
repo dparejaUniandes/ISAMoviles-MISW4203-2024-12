@@ -20,4 +20,7 @@
     <string name="title_albums">Albums</string>
     <string name="title_collectors">Coleccionistas</string>
     <string name="title_comments">Comentarios del álbum</string>
+    <string name="album_release_date">Fecha</string>
+    <string name="album_genre">Género</string>
+    <string name="album_record_label">Discografía</string>
 </resources>
