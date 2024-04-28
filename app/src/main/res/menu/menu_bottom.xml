@@ -9,6 +9,11 @@
     <item
         android:id="@+id/albumsRv"
         android:icon="@drawable/icon_albumes"
-        android:title="Albumes" />
+        android:title="Álbumes" />
+
+    <item
+        android:id="@+id/coleccionistas"
+        android:icon="@drawable/icon_coleccionistas"
+        android:title="Coleccionistas" />
 
 </menu>
