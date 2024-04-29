@@ -81,6 +81,7 @@ public class VinilosAppTest {
     @Test
     public void testViewAlbumDetail() throws InterruptedException {
         Thread.sleep(2000);
+
         // Iniciar la prueba asegurando que estamos en la lista de álbumes
         Espresso.onView(ViewMatchers.withId(R.id.albumsRv))
                 .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
