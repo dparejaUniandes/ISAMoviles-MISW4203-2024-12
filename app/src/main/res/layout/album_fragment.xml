@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.AlbumFragment"
-    android:background="#E0F7FA">
+    android:background="#FFFFFF">
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -17,6 +17,8 @@
         android:id="@+id/albumsRv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
