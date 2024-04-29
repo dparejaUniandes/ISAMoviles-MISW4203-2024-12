@@ -12,7 +12,7 @@ git clone https://github.com/dparejaUniandes/ISAMoviles-MISW4203-2024-12.git
 
 ## APK de la Aplicación
 
-A continuación se encuentra el APK de la aplicación, el cual podrá descargar para ejecutarla:
+A continuación se encuentra el APK de la aplicación, el cual podrás descargar para ejecutarla:
 
 * [app-vinilos-apk.zip](https://github.com/dparejaUniandes/ISAMoviles-MISW4203-2024-12/files/15144804/app-vinilos-apk.zip)
 
