@@ -41,9 +41,7 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
 
         holder.viewDataBinding.also {
             it.album = albums[position]
-          
-            val imageView: ImageView =  holder.viewDataBinding.root.findViewById(R.id.headerImage)
-
+            val imageView: ImageView =  holder.viewDataBinding.root.findViewById(R.id.header_image)
             Picasso.get()
                 .load(albums[position].cover)
                 .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
