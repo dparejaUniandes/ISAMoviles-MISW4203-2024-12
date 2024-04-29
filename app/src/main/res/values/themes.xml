@@ -12,6 +12,7 @@
         <item name="android:navigationBarColor">@color/primary</item>
     </style>
 
+
     <style name="Theme.VinilosApp.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -20,4 +21,12 @@
     <style name="Theme.Vinyls_Jetpack_Application.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Vinyls_Jetpack_Application.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Widget.App.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>
+    </style>
+
+    <style name="ThemeOverlay.App.BottomNavigationView" parent="">
+        <item name="colorPrimary">@color/primary</item>
+    </style>
 </resources>
