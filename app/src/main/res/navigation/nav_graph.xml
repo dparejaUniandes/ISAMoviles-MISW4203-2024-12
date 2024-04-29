@@ -22,7 +22,6 @@
     <fragment
         android:id="@+id/albumDetailFragment"
         android:name="com.example.vinilosapp.view.AlbumDetailFragment"
-        android:label="Detalle Álbum"
         tools:layout="@layout/album_detail_fragment" >
         <argument
             android:name="albumId"
