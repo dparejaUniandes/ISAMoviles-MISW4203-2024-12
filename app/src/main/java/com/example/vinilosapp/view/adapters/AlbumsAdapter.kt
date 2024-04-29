@@ -11,6 +11,7 @@ import com.example.vinilosapp.R
 import com.example.vinilosapp.databinding.AlbumItemBinding
 import com.example.vinilosapp.models.Album
 import com.example.vinilosapp.view.AlbumFragmentDirections
+import com.squareup.picasso.MemoryPolicy
 import com.squareup.picasso.Picasso
 
 class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
@@ -43,6 +44,7 @@ class AlbumsAdapter : RecyclerView.Adapter<AlbumsAdapter.AlbumViewHolder>(){
             val imageView: ImageView =  holder.viewDataBinding.root.findViewById(R.id.header_image)
             Picasso.get()
                 .load(albums[position].cover)
+                .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
                 .into(imageView)
         }
         holder.viewDataBinding.root.setOnClickListener {
