@@ -15,7 +15,8 @@
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:titleTextColor="@color/white"/>
+        app:titleTextColor="@color/white"
+        app:itemIconTint="@color/white"/>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment"
@@ -39,6 +40,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_bottom"
-        app:itemTextColor="@color/primary"/>
+        app:itemTextColor="@color/primary"
+        app:itemIconTint="@color/primary"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
