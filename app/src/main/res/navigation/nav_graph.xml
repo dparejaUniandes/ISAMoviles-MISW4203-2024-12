@@ -7,13 +7,13 @@
     <fragment
         android:id="@+id/page_inicio"
         android:name="com.example.vinilosapp.view.InicioFragment"
-        android:label="Inicio"
+        android:label="@string/title_home"
         tools:layout="@layout/fragment_inicio" >
     </fragment>
     <fragment
         android:id="@+id/albumFragment"
         android:name="com.example.vinilosapp.view.AlbumFragment"
-        android:label="Álbumes"
+        android:label="@string/title_albums"
         tools:layout="@layout/album_fragment" >
         <action
             android:id="@+id/action_albumFragment_to_albumDetailFragment"
