@@ -36,7 +36,7 @@
                 android:translationZ="@dimen/cardview_default_elevation">
 
                 <ImageView
-                    android:id="@+id/header_image"
+                    android:id="@+id/headerImage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:adjustViewBounds="true"

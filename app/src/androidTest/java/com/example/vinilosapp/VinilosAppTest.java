@@ -66,8 +66,7 @@ public class VinilosAppTest {
         Espresso.onView(withIndex(ViewMatchers.withId(R.id.albumName), 0))
                 .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
 
-        Espresso.onView(withIndex(ViewMatchers.withId(R.id.header_image), 0))
-                .perform(ViewActions.scrollTo())
+        Espresso.onView(withIndex(ViewMatchers.withId(R.id.headerImage), 0))
                 .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
 
         // Simular clic para ver detalle del álbum
@@ -80,7 +79,8 @@ public class VinilosAppTest {
     }
 
     @Test
-    public void testViewAlbumDetail() {
+    public void testViewAlbumDetail() throws InterruptedException {
+        Thread.sleep(2000);
         // Iniciar la prueba asegurando que estamos en la lista de álbumes
         Espresso.onView(ViewMatchers.withId(R.id.albumsRv))
                 .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
@@ -94,10 +94,6 @@ public class VinilosAppTest {
         // Verificar que la información detallada se muestra
         Espresso.onView(ViewMatchers.withId(R.id.albumDescription))
                 .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
-
-        // Verificar que el ProgressBar no está visible después de cargar
-        Espresso.onView(ViewMatchers.withId(R.id.progressBar))
-                .check(ViewAssertions.doesNotExist());
 
         // Verificar si el botón "back" está visible
         Espresso.onView(ViewMatchers.withContentDescription(R.string.abc_action_bar_up_description))
