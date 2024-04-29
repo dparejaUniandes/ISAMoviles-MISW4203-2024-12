@@ -10,6 +10,13 @@ git clone https://github.com/dparejaUniandes/ISAMoviles-MISW4203-2024-12.git
 
 3. Espera a que el proyecto se sincronice y se descarguen las dependencias necesarias.
 
+## APK de la Aplicación
+
+A continuación se encuentra el APK de la aplicación, el cual podrá descargar para ejecutarla:
+
+* [app-vinilos-apk.zip](https://github.com/dparejaUniandes/ISAMoviles-MISW4203-2024-12/files/15144804/app-vinilos-apk.zip)
+
+
 # Pruebas Automatizadas con Espresso para la Aplicación Vinilos
 
 Este proyecto contiene pruebas automatizadas desarrolladas con Espresso para la aplicación Vinilos. Estas pruebas tienen como objetivo verificar el correcto funcionamiento de las funcionalidades principales de la aplicación.
