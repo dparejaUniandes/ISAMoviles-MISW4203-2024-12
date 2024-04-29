@@ -20,6 +20,7 @@
             android:elevation="1000dp"
             android:radius="22dp"
             app:cardBackgroundColor="#FFFFFF"
+            android:translationZ="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +32,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="8dp">
+                android:padding="8dp"
+                android:translationZ="@dimen/cardview_default_elevation">
 
                 <ImageView
                     android:id="@+id/header_image"
@@ -55,21 +57,8 @@
                     android:text="@{album.name}"
                     android:textColor="@color/black"
                     android:textColorLink="@color/black"
-                    android:textSize="20sp"
+                    android:textSize="22sp"
                     android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/albumDescription"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
-                    android:paddingStart="8dp"
-                    android:paddingTop="3dp"
-                    android:paddingEnd="8dp"
-                    android:paddingBottom="3dp"
-                    android:text="@{album.description}"
-                    android:textColor="@color/black" />
-
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
