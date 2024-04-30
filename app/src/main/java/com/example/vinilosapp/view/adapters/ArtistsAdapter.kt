@@ -40,7 +40,7 @@ class ArtistsAdapter : RecyclerView.Adapter<ArtistsAdapter.ArtistViewHolder>(){
 
         holder.viewDataBinding.also {
             it.artist = artists[position]
-            val imageView: ImageView =  holder.viewDataBinding.root.findViewById(R.id.header_image)
+            val imageView: ImageView =  holder.viewDataBinding.root.findViewById(R.id.headerImage)
             Picasso.get()
                 .load(artists[position].image)
                 .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
