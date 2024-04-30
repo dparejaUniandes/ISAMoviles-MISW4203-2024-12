@@ -7,10 +7,10 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface ArtistService {
-    @GET("artists")
+    @GET("musicians")
     fun getArtists():
             Call<List<Artist>>
-    @GET("artists/{artistId}")
+    @GET("musicians/{artistId}")
     fun getArtist(@Path("artistId") artistId : Int):
             Call<Artist>
 }
