@@ -11,4 +11,9 @@
         android:icon="@drawable/icon_albumes"
         android:title="@string/title_albums"/>
 
+    <item
+        android:id="@+id/artistsPageBtn"
+        android:icon="@drawable/icon_artistas"
+        android:title="@string/title_artists"/>
+
 </menu>
