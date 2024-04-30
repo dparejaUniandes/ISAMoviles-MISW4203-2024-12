@@ -3,17 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/albumFragment">
+    app:startDestination="@id/artistFragment">
     <fragment
         android:id="@+id/page_inicio"
         android:name="com.example.vinilosapp.view.InicioFragment"
-        android:label="Inicio"
+        android:label="@string/title_home"
         tools:layout="@layout/fragment_inicio" >
     </fragment>
     <fragment
         android:id="@+id/albumFragment"
         android:name="com.example.vinilosapp.view.AlbumFragment"
-        android:label="Álbumes"
+        android:label="@string/title_albums"
         tools:layout="@layout/album_fragment" >
         <action
             android:id="@+id/action_albumFragment_to_albumDetailFragment"
@@ -32,6 +32,12 @@
         <action
             android:id="@+id/action_albumDetailFragment_to_albumFragment"
             app:destination="@id/albumFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/artistFragment"
+        android:name="com.example.vinilosapp.view.ArtistFragment"
+        android:label="@string/title_artists"
+        tools:layout="@layout/artist_fragment" >
     </fragment>
     <fragment
         android:id="@+id/commentFragment"

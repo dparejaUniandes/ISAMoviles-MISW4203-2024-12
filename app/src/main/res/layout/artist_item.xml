@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable name="album" type="com.example.vinilosapp.models.Album"/>
+        <variable name="artist" type="com.example.vinilosapp.models.Artist"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -40,13 +40,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:adjustViewBounds="true"
-                    android:src="@{album.cover}"
+                    android:src="@{artist.image}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/albumName"
+                    android:id="@+id/artistName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat"
@@ -54,7 +54,7 @@
                     android:paddingTop="3dp"
                     android:paddingEnd="8dp"
                     android:paddingBottom="3dp"
-                    android:text="@{album.name}"
+                    android:text="@{artist.name}"
                     android:textColor="@color/black"
                     android:textColorLink="@color/black"
                     android:textSize="22sp"

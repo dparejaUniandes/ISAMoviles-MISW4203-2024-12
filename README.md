@@ -10,6 +10,20 @@ git clone https://github.com/dparejaUniandes/ISAMoviles-MISW4203-2024-12.git
 
 3. Espera a que el proyecto se sincronice y se descarguen las dependencias necesarias.
 
+4. Puedes visualizar la aplicación en un emulador siguiendo los pasos descritos en la sección: [Ejecuta tu app en un dispositivo virtual (emulador)](https://developer.android.com/codelabs/basic-android-kotlin-training-first-template-project?hl=es-419#2) 
+
+### Backend
+
+El backend de la aplicación se encuentra desplegado en un servidor en la nube. Por lo tanto, no es necesario realizar alguna configuración adicional para ejecutar la aplicación.
+
+## APK de la Aplicación
+
+A continuación se encuentra el APK de la aplicación, el cual podrás descargar haciendo clic en este enlace:
+
+* [app-vinilos-apk.zip](https://github.com/dparejaUniandes/ISAMoviles-MISW4203-2024-12/files/15144804/app-vinilos-apk.zip)
+
+Puedes importarlo en Android Studio siguiendo los pasos descritos en: [Instalar o adicionar archivos en el emulador](https://developer.android.com/studio/run/emulator-install-add-files)
+
 # Pruebas Automatizadas con Espresso para la Aplicación Vinilos
 
 Este proyecto contiene pruebas automatizadas desarrolladas con Espresso para la aplicación Vinilos. Estas pruebas tienen como objetivo verificar el correcto funcionamiento de las funcionalidades principales de la aplicación.
