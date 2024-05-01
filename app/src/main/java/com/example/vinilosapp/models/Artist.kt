@@ -13,5 +13,7 @@ data class Artist (
     @SerializedName("description")
     val description:String = "",
     @SerializedName("birthDate")
-    val birthDate:String = ""
+    var birthDate:String = "",
+    @SerializedName("albums")
+    val albums: List<Album> = listOf()
 )

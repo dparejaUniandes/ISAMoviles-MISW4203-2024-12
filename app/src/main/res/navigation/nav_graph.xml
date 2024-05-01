@@ -3,12 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/artistFragment">
+    app:startDestination="@id/artistDetailFragment">
     <fragment
         android:id="@+id/page_inicio"
         android:name="com.example.vinilosapp.view.InicioFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_inicio" >
+    </fragment>
+    <fragment
+        android:id="@+id/artistDetailFragment"
+        android:name="com.example.vinilosapp.view.ArtistDetailFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/artist_detail_fragment" >
     </fragment>
     <fragment
         android:id="@+id/albumFragment"
