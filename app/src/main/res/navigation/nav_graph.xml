@@ -15,6 +15,9 @@
         android:name="com.example.vinilosapp.view.ArtistDetailFragment"
         android:label="@string/title_home"
         tools:layout="@layout/artist_detail_fragment" >
+        <action
+            android:id="@+id/action_albumFragment_to_albumDetailFragment"
+            app:destination="@id/albumDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/albumFragment"
