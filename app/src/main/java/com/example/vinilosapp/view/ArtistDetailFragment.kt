@@ -1,6 +1,7 @@
 package com.example.vinilosapp.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +16,7 @@ import com.example.vinilosapp.models.Artist
 import com.example.vinilosapp.view.adapters.ArtistDetailAdapter
 import com.example.vinilosapp.viewmodels.ArtistDetailViewModel
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.ConcatAdapter
 import com.example.vinilosapp.view.adapters.AlbumsAdapter
 
@@ -53,7 +55,9 @@ class ArtistDetailFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val activity = requireNotNull(this.activity)
-        viewModel = ViewModelProvider(this, ArtistDetailViewModel.Factory(activity.application, 1)).get(
+        val args: ArtistDetailFragmentArgs by navArgs()
+        Log.d("Args", args.artistId.toString())
+        viewModel = ViewModelProvider(this, ArtistDetailViewModel.Factory(activity.application, args.artistId)).get(
             ArtistDetailViewModel::class.java)
         viewModel.artist.observe(viewLifecycleOwner, Observer<Artist> {
             it.apply {
