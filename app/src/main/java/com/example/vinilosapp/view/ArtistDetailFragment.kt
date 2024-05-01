@@ -15,6 +15,8 @@ import com.example.vinilosapp.models.Artist
 import com.example.vinilosapp.view.adapters.ArtistDetailAdapter
 import com.example.vinilosapp.viewmodels.ArtistDetailViewModel
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.ConcatAdapter
+import com.example.vinilosapp.view.adapters.AlbumsAdapter
 
 /**
  * A simple [Fragment] subclass.
@@ -29,6 +31,7 @@ class ArtistDetailFragment : Fragment() {
     private lateinit var viewModel: ArtistDetailViewModel
     private lateinit var recyclerView: RecyclerView
     private var artistDetailAdapter: ArtistDetailAdapter? = null
+    private var albumAdapter: AlbumsAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,13 +40,14 @@ class ArtistDetailFragment : Fragment() {
     ): View? {
         _binding = ArtistDetailFragmentBinding.inflate(inflater, container, false)
         artistDetailAdapter = ArtistDetailAdapter()
+        albumAdapter = AlbumsAdapter()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         recyclerView = binding.artistDetailRv
         recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = artistDetailAdapter
+        recyclerView.adapter = ConcatAdapter(artistDetailAdapter, albumAdapter)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -55,6 +59,8 @@ class ArtistDetailFragment : Fragment() {
             it.apply {
                 if(this.artistId == artistId){
                     artistDetailAdapter!!.artist = this
+
+                    albumAdapter!!.albums = this.albums
                     (getActivity() as AppCompatActivity?)!!.supportActionBar!!.title = this.name
                 }
             }

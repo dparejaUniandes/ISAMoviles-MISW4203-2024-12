@@ -13,7 +13,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-        tools:context=".view.ArtistDetailFragment"
-        tools:listitem="@layout/artist_detail_item" />
+        tools:context=".view.ArtistDetailFragment" />
 
 </FrameLayout>
