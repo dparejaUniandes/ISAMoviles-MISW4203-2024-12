@@ -11,6 +11,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.vinilosapp.R
 import com.example.vinilosapp.databinding.ActivityMainBinding
 import com.example.vinilosapp.models.Album
+import com.example.vinilosapp.models.Collector
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -38,17 +39,14 @@ class MainActivity : AppCompatActivity() {
         // FOR THE BOTTOM MENU - this can be deleted
         val navListener =
             BottomNavigationView.OnNavigationItemSelectedListener { item: MenuItem ->
-
-                R.id.albumsRv
-                R.id.artistsRv
-
-                Log.d("Item id", item.itemId.toString())
                 var selectedFragment: Fragment? = null
                 val itemId = item.itemId
                 if (itemId == 2131296332) {
                     selectedFragment = AlbumFragment()
                 } else if (itemId == 2131296344) {
                     selectedFragment = ArtistFragment()
+                } else if (itemId == R.id.collectorsPageBtn) {
+                    selectedFragment = CollectorFragment()
                 }
                 // It will help to replace the
                 // one fragment to other.
@@ -58,7 +56,6 @@ class MainActivity : AppCompatActivity() {
                 }
                 true
             }
-
         val bottomNav : BottomNavigationView = findViewById(R.id.bottomNav);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
