@@ -41,9 +41,9 @@ class MainActivity : AppCompatActivity() {
             BottomNavigationView.OnNavigationItemSelectedListener { item: MenuItem ->
                 var selectedFragment: Fragment? = null
                 val itemId = item.itemId
-                if (itemId == 2131296332) {
+                if (itemId == R.id.albumsPageBtn) {
                     selectedFragment = AlbumFragment()
-                } else if (itemId == 2131296344) {
+                } else if (itemId == R.id.artistsPageBtn) {
                     selectedFragment = ArtistFragment()
                 } else if (itemId == R.id.collectorsPageBtn) {
                     selectedFragment = CollectorFragment()
