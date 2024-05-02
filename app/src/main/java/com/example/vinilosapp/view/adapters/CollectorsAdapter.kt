@@ -3,26 +3,14 @@ package com.example.vinilosapp.view.adapters
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.vinilosapp.R
-import com.example.vinilosapp.databinding.AlbumItemBinding
-
-import com.example.vinilosapp.placeholder.PlaceholderContent.PlaceholderItem
 import com.example.vinilosapp.databinding.CollectorItemBinding
-import com.example.vinilosapp.models.Album
 import com.example.vinilosapp.models.Collector
 import com.example.vinilosapp.view.AlbumFragmentDirections
-import com.squareup.picasso.MemoryPolicy
-import com.squareup.picasso.Picasso
 
-/**
- * [RecyclerView.Adapter] that can display a [PlaceholderItem].
- * TODO: Replace the implementation with code for your data type.
- */
 class CollectorsAdapter: RecyclerView.Adapter<CollectorsAdapter.CollectorViewHolder>(){
 
     var collectors :List<Collector> = emptyList()
