@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.vinilosapp.R
 import com.example.vinilosapp.databinding.ActivityMainBinding
@@ -41,11 +42,11 @@ class MainActivity : AppCompatActivity() {
             BottomNavigationView.OnNavigationItemSelectedListener { item: MenuItem ->
                 var selectedFragment: Fragment? = null
                 val itemId = item.itemId
-                if (itemId == R.id.albumsPageBtn) {
+                if (itemId == R.id.albumFragment) {
                     selectedFragment = AlbumFragment()
-                } else if (itemId == R.id.artistsPageBtn) {
+                } else if (itemId == R.id.artistFragment) {
                     selectedFragment = ArtistFragment()
-                } else if (itemId == R.id.collectorsPageBtn) {
+                } else if (itemId == R.id.collectorsFragment) {
                     selectedFragment = CollectorFragment()
                 }
                 // It will help to replace the
@@ -59,7 +60,10 @@ class MainActivity : AppCompatActivity() {
         val bottomNav : BottomNavigationView = findViewById(R.id.bottomNav);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
-
+        bottomNav.setOnNavigationItemSelectedListener { item ->
+            // In order to get the expected behavior, you have to call default Navigation method manually
+            NavigationUI.onNavDestinationSelected(item, navController)
+        }
 
     }
 
