@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilosapp.R
 import com.example.vinilosapp.databinding.ArtistItemBinding
 import com.example.vinilosapp.models.Artist
+import com.example.vinilosapp.view.ArtistFragmentDirections
 import com.squareup.picasso.MemoryPolicy
 import com.squareup.picasso.Picasso
 
@@ -45,6 +46,12 @@ class ArtistsAdapter : RecyclerView.Adapter<ArtistsAdapter.ArtistViewHolder>(){
                 .load(artists[position].image)
                 .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
                 .into(imageView)
+        }
+
+        holder.viewDataBinding.root.setOnClickListener {
+            val action = ArtistFragmentDirections.actionArtistFragmentToArtistDetailFragment(artists[position].artistId)
+            // Navigate using that action
+            holder.viewDataBinding.root.findNavController().navigate(action)
         }
     }
 
