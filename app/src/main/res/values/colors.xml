@@ -10,4 +10,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="primary">#11A1FF</color>
     <color name="secondary">#A9DDFF</color>
+    <color name="backgroundColorList">#F8F8F8</color>
 </resources>

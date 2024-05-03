@@ -7,8 +7,18 @@
         android:title="Inicio" />
 
     <item
-        android:id="@+id/albumsPageBtn"
+        android:id="@+id/albumFragment"
         android:icon="@drawable/icon_albumes"
         android:title="@string/title_albums"/>
+
+    <item
+        android:id="@+id/artistFragment"
+        android:icon="@drawable/icon_artistas"
+        android:title="@string/title_artists"/>
+
+    <item
+        android:id="@+id/collectorsFragment"
+        android:icon="@drawable/icon_collector"
+        android:title="@string/title_collectors"/>
 
 </menu>
