@@ -18,9 +18,11 @@
     <string name="txt_no_comments">No hay comentarios para este álbum</string>
     <string name="title_home">Incio</string>
     <string name="title_albums">Álbumes</string>
+    <string name="title_artists">Artistas</string>
     <string name="title_collectors">Coleccionistas</string>
     <string name="title_comments">Comentarios del álbum</string>
     <string name="album_release_date">Fecha</string>
     <string name="album_genre">Género</string>
     <string name="album_record_label">Discografía</string>
+    <string name="artist_birthday">Cumpleaños</string>
 </resources>
