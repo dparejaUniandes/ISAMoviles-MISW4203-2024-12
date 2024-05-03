@@ -39,11 +39,6 @@ class CollectorsAdapter: RecyclerView.Adapter<CollectorsAdapter.CollectorViewHol
         holder.viewDataBinding.also {
             it.collector = collectors[position]
         }
-        holder.viewDataBinding.root.setOnClickListener {
-            val action = AlbumFragmentDirections.actionAlbumFragmentToAlbumDetailFragment(collectors[position].collectorId)
-            // Navigate using that action
-            holder.viewDataBinding.root.findNavController().navigate(action)
-        }
     }
 
     override fun getItemCount(): Int = collectors.size

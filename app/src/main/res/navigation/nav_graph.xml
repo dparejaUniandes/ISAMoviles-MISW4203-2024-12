@@ -55,6 +55,12 @@
             app:argType="integer" />
     </fragment>
     <fragment
+        android:id="@+id/collectorsFragment"
+        android:name="com.example.vinilosapp.view.CollectorFragment"
+        android:label="Colleccionistas"
+        tools:layout="@layout/collector_fragment" >
+    </fragment>
+    <fragment
         android:id="@+id/commentFragment"
         android:name="com.example.vinilosapp.view.CommentFragment"
         android:label="Comentarios"
