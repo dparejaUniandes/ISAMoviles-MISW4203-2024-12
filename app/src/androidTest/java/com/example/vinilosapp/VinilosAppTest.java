@@ -108,4 +108,11 @@ public class VinilosAppTest {
         Espresso.onView(ViewMatchers.withId(R.id.albumsRv))
                 .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
     }
+
+    @Test
+    public void testArtists() throws InterruptedException {
+        ArtistsTest artistsTest = new ArtistsTest();
+        artistsTest.testViewArtistsList();
+        artistsTest.testNavigateToArtistDetail();
+    }
 }
