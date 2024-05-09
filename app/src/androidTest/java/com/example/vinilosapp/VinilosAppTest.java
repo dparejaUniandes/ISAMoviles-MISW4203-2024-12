@@ -115,4 +115,10 @@ public class VinilosAppTest {
         artistsTest.testViewArtistsList();
         artistsTest.testNavigateToArtistDetail();
     }
+
+    @Test
+    public void testCollectors() throws InterruptedException {
+        CollectorsTest collectorsTest = new CollectorsTest();
+        collectorsTest.testViewCollectorsList();
+    }
 }
