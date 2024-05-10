@@ -18,20 +18,13 @@ class ArtistBroker constructor(context: Context) {
             }
     }
 
-    fun getArtists(onResponse:(resp:List<Artist>)->Unit, onFailure:(resp:String)->Unit) {
-        var r = VinilosApi.artistService.getArtists()
-        var p = r.enqueue(
-            object : Callback<List<Artist>> {
-                override fun onFailure(call: Call<List<Artist>>, t: Throwable) {
-                    onFailure(t.message!!)
-                }
-
-                override fun onResponse(call: Call<List<Artist>>, response: retrofit2.Response<List<Artist>>) {
-                    Log.d("Body Artists", response.body().toString())
-                    onResponse(response.body()!!)
-
-                }
-            })
+    suspend fun getArtists() : Result<List<Artist>> {
+        try {
+            val artists = VinilosApi.artistService.getArtists()
+            return Result.success(artists)
+        } catch (e : Exception) {
+            return Result.failure(e)
+        }
     }
 
     suspend fun getArtist(artistId : (Int)) : Result<Artist> {

@@ -41,12 +41,12 @@ class ArtistDetailViewModel(application: Application, artistId: Int) :  AndroidV
         viewModelScope.launch(Dispatchers.Default) {
             withContext(Dispatchers.IO) {
                     artistRepository.refreshData(id).onSuccess {
-                    _artist.postValue(it)
-                    _eventNetworkError.postValue(false)
-                    _isNetworkErrorShown.postValue(false)
+                        _artist.postValue(it)
+                        _eventNetworkError.postValue(false)
+                        _isNetworkErrorShown.postValue(false)
                 }.onFailure {
                     Log.d("Error", it.toString())
-                    _eventNetworkError.value = true
+                    _eventNetworkError.postValue(true)
                 }
             }
         }

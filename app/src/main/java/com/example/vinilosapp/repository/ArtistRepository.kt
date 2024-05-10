@@ -5,12 +5,8 @@ import com.example.vinilosapp.broker.ArtistBroker
 import com.example.vinilosapp.models.Artist
 
 class ArtistRepository(val application: Application){
-    fun refreshData(callback: (List<Artist>)->Unit, onFailure: (String)->Unit) {
-        ArtistBroker.getInstance(application).getArtists({
-            callback(it)
-        },
-            onFailure
-        )
+    suspend fun refreshData() : Result<List<Artist>>{
+        return ArtistBroker.getInstance(application).getArtists()
     }
 
     suspend fun refreshData(artistId: (Int)) : Result<Artist> {
