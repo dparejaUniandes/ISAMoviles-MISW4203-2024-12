@@ -6,6 +6,5 @@ import retrofit2.http.GET
 
 interface CollectorService {
     @GET("collectors")
-    fun getCollectors():
-            Call<List<Collector>>
+    suspend fun getCollectors(): List<Collector>
 }
