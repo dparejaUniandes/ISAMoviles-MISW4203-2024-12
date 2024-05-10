@@ -13,13 +13,7 @@ class ArtistRepository(val application: Application){
         )
     }
 
-    fun refreshData(artistId: (Int), callback: (Artist)->Unit, onFailure: (String)->Unit) {
-        ArtistBroker.getInstance(application).getArtist(
-            artistId,
-            {
-            callback(it)
-            },
-            onFailure
-        )
+    suspend fun refreshData(artistId: (Int)) : Result<Artist> {
+        return ArtistBroker.getInstance(application).getArtist(artistId)
     }
 }

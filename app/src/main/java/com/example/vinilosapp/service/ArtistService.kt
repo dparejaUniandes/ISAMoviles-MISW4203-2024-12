@@ -11,6 +11,5 @@ interface ArtistService {
     fun getArtists():
             Call<List<Artist>>
     @GET("musicians/{artistId}")
-    fun getArtist(@Path("artistId") artistId : Int):
-            Call<Artist>
+    suspend fun getArtist(@Path("artistId") artistId : Int): Artist
 }
