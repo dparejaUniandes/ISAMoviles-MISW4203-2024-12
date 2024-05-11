@@ -16,20 +16,20 @@ class AlbumBroker(context: Context) {
     }
 
     suspend fun getAlbums() : Result<List<Album>> {
-        try {
-            var albums = VinilosApi.albumService.getAlbums()
-            return Result.success(albums)
+        return try {
+            val albums = VinilosApi.albumService.getAlbums()
+            Result.success(albums)
         } catch (e : Exception) {
-            return Result.failure(e)
+            Result.failure(e)
         }
     }
 
     suspend fun getAlbum(albumId : (Int)) : Result<Album>  {
-        try {
-            var album = VinilosApi.albumService.getAlbum(albumId)
-            return Result.success(album)
+        return try {
+            val album = VinilosApi.albumService.getAlbum(albumId)
+            Result.success(album)
         } catch (e : Exception) {
-            return Result.failure(e)
+            Result.failure(e)
         }
     }
 }
