@@ -9,12 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.vinilosapp.view.adapters.CollectorsAdapter
 import com.example.vinilosapp.R
 import com.example.vinilosapp.databinding.CollectorFragmentBinding
-import com.example.vinilosapp.models.Collector
 import com.example.vinilosapp.viewmodels.CollectorViewModel
 
 /**
@@ -31,7 +29,7 @@ class CollectorFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = CollectorFragmentBinding.inflate(inflater, container, false)
         val view = binding.root
         viewModelAdapter = CollectorsAdapter()
@@ -51,15 +49,16 @@ class CollectorFragment : Fragment() {
         }
         viewModel = ViewModelProvider(this, CollectorViewModel.Factory(activity.application)).get(
             CollectorViewModel::class.java)
-        viewModel.collectors.observe(viewLifecycleOwner, Observer<List<Collector>> {
+        viewModel.collectors.observe(viewLifecycleOwner) {
             it.apply {
                 viewModelAdapter!!.collectors = this
-                (getActivity() as AppCompatActivity?)!!.supportActionBar!!.title = getString(R.string.title_collectors)
+                (getActivity() as AppCompatActivity?)!!.supportActionBar!!.title =
+                    getString(R.string.title_collectors)
             }
-        })
-        viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
+        }
+        viewModel.eventNetworkError.observe(viewLifecycleOwner) { isNetworkError ->
             if (isNetworkError) onNetworkError()
-        })
+        }
         (getActivity() as AppCompatActivity?)!!.supportActionBar!!.title = getString(R.string.title_collectors)
     }
     override fun onDestroyView() {
