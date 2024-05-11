@@ -12,22 +12,17 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilosapp.databinding.ArtistDetailFragmentBinding
-import com.example.vinilosapp.models.Artist
 import com.example.vinilosapp.view.adapters.ArtistDetailAdapter
 import com.example.vinilosapp.viewmodels.ArtistDetailViewModel
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.ConcatAdapter
 import com.example.vinilosapp.view.adapters.AlbumsAdapter
 
 /**
  * A simple [Fragment] subclass.
- * Use the [ArtistDetailFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
 class ArtistDetailFragment : Fragment() {
-    private var artistId: Int = 0
-
     private var _binding: ArtistDetailFragmentBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: ArtistDetailViewModel
@@ -39,7 +34,7 @@ class ArtistDetailFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = ArtistDetailFragmentBinding.inflate(inflater, container, false)
         artistDetailAdapter = ArtistDetailAdapter()
         albumAdapter = AlbumsAdapter()
@@ -59,19 +54,19 @@ class ArtistDetailFragment : Fragment() {
         Log.d("Args", args.artistId.toString())
         viewModel = ViewModelProvider(this, ArtistDetailViewModel.Factory(activity.application, args.artistId)).get(
             ArtistDetailViewModel::class.java)
-        viewModel.artist.observe(viewLifecycleOwner, Observer<Artist> {
+        viewModel.artist.observe(viewLifecycleOwner) {
             it.apply {
-                if(this.artistId == artistId){
+                if (this.artistId == artistId) {
                     artistDetailAdapter!!.artist = this
 
                     albumAdapter!!.albums = this.albums
                     (getActivity() as AppCompatActivity?)!!.supportActionBar!!.title = this.name
                 }
             }
-        })
-        viewModel.eventNetworkError.observe(viewLifecycleOwner, Observer<Boolean> { isNetworkError ->
+        }
+        viewModel.eventNetworkError.observe(viewLifecycleOwner) { isNetworkError ->
             if (isNetworkError) onNetworkError()
-        })
+        }
     }
 
     override fun onDestroyView() {
