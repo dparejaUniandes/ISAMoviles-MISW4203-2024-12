@@ -6,7 +6,7 @@ import java.lang.Exception
 
 class AlbumBroker(context: Context) {
     companion object{
-        var instance: AlbumBroker? = null
+        private var instance: AlbumBroker? = null
         fun getInstance(context: Context) =
             instance ?: synchronized(this) {
                 instance ?: AlbumBroker(context).also {
