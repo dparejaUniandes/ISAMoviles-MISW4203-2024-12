@@ -16,20 +16,20 @@ class ArtistBroker(context: Context) {
     }
 
     suspend fun getArtists() : Result<List<Artist>> {
-        try {
+        return try {
             val artists = VinilosApi.artistService.getArtists()
-            return Result.success(artists)
+            Result.success(artists)
         } catch (e : Exception) {
-            return Result.failure(e)
+            Result.failure(e)
         }
     }
 
     suspend fun getArtist(artistId : (Int)) : Result<Artist> {
-        try {
+        return try {
             val artist = VinilosApi.artistService.getArtist(artistId)
-            return Result.success(artist)
+            Result.success(artist)
         } catch (e : Exception) {
-            return Result.failure(e)
+            Result.failure(e)
         }
     }
 }
