@@ -6,7 +6,7 @@ import java.lang.Exception
 
 class CollectorBroker(context: Context) {
     companion object{
-        var instance: CollectorBroker? = null
+        private var instance: CollectorBroker? = null
         fun getInstance(context: Context) =
             instance ?: synchronized(this) {
                 instance ?: CollectorBroker(context).also {
