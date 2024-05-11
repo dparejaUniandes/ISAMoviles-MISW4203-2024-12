@@ -4,7 +4,7 @@
     <item
         android:id="@+id/page_inicio"
         android:icon="@drawable/icon_inicio"
-        android:title="Inicio" />
+        android:title="@string/title_inicio" />
 
     <item
         android:id="@+id/albumFragment"

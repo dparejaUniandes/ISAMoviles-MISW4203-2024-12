@@ -25,4 +25,9 @@
     <string name="album_genre">Género</string>
     <string name="album_record_label">Discografía</string>
     <string name="artist_birthday">Cumpleaños</string>
+    <string name="cover_album">Cover album</string>
+    <string name="artist_image">Artist image</string>
+    <string name="home_page">Página de inicio</string>
+    <string name="collector_image">Collector image</string>
+    <string name="title_inicio">Inicio</string>
 </resources>
