@@ -3,9 +3,9 @@
 ## Configuración del Proyecto
 
 1. Clona este repositorio en tu máquina local utilizando el siguiente comando:
-```
-git clone https://github.com/dparejaUniandes/ISAMoviles-MISW4203-2024-12.git
-```
+   ```
+   git clone https://github.com/dparejaUniandes/ISAMoviles-MISW4203-2024-12.git
+   ```
 2. Abre el proyecto en Android Studio.
 
 3. Espera a que el proyecto se sincronice y se descarguen las dependencias necesarias.
