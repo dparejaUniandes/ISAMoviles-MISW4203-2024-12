@@ -11,8 +11,6 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.vinilosapp.R
 import com.example.vinilosapp.databinding.ActivityMainBinding
-import com.example.vinilosapp.models.Album
-import com.example.vinilosapp.models.Collector
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
