@@ -4,7 +4,7 @@ import android.content.Context
 import com.example.vinilosapp.models.Artist
 import java.lang.Exception
 
-class ArtistBroker constructor(context: Context) {
+class ArtistBroker(context: Context) {
     companion object{
         var instance: ArtistBroker? = null
         fun getInstance(context: Context) =
