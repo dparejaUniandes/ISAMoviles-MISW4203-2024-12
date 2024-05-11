@@ -6,6 +6,7 @@ import com.example.vinilosapp.models.Album
 import com.example.vinilosapp.models.Comment
 import retrofit2.Call
 import retrofit2.Callback
+import java.lang.Exception
 
 class AlbumBroker constructor(context: Context) {
     companion object{
@@ -18,35 +19,21 @@ class AlbumBroker constructor(context: Context) {
             }
     }
 
-    fun getAlbums(onResponse:(resp:List<Album>)->Unit, onFailure:(resp:String)->Unit) {
-        var r = VinilosApi.albumService.getAlbums()
-        var p = r.enqueue(
-            object : Callback<List<Album>> {
-                override fun onFailure(call: Call<List<Album>>, t: Throwable) {
-                    onFailure(t.message!!)
-                }
-
-                override fun onResponse(call: Call<List<Album>>, response: retrofit2.Response<List<Album>>) {
-                    Log.d("Body Albums", response.body().toString())
-                    onResponse(response.body()!!)
-
-                }
-            })
+    suspend fun getAlbums() : Result<List<Album>> {
+        try {
+            var albums = VinilosApi.albumService.getAlbums()
+            return Result.success(albums)
+        } catch (e : Exception) {
+            return Result.failure(e)
+        }
     }
 
-    fun getAlbum(albumId : (Int), onResponse:(resp:Album)->Unit, onFailure:(resp:String)->Unit) {
-        var r = VinilosApi.albumService.getAlbum(albumId)
-        var p = r.enqueue(
-            object : Callback<Album> {
-                override fun onFailure(call: Call<Album>, t: Throwable) {
-                    onFailure(t.message!!)
-                }
-
-                override fun onResponse(call: Call<Album>, response: retrofit2.Response<Album>) {
-                    Log.d("Body Album", response.body().toString())
-                    onResponse(response.body()!!)
-
-                }
-            })
+    suspend fun getAlbum(albumId : (Int)) : Result<Album>  {
+        try {
+            var album = VinilosApi.albumService.getAlbum(albumId)
+            return Result.success(album)
+        } catch (e : Exception) {
+            return Result.failure(e)
+        }
     }
 }

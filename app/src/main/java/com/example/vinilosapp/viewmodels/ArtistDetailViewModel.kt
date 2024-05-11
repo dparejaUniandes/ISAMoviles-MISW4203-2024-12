@@ -1,13 +1,18 @@
 package com.example.vinilosapp.viewmodels
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import com.example.vinilosapp.models.Artist
 import com.example.vinilosapp.repository.ArtistRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ArtistDetailViewModel(application: Application, artistId: Int) :  AndroidViewModel(application) {
 
@@ -33,13 +38,18 @@ class ArtistDetailViewModel(application: Application, artistId: Int) :  AndroidV
     }
 
     private fun refreshDataFromNetwork() {
-        artistRepository.refreshData(id, {
-            _artist.postValue(it)
-            _eventNetworkError.value = false
-            _isNetworkErrorShown.value = false
-        },{
-            _eventNetworkError.value = true
-        })
+        viewModelScope.launch(Dispatchers.Default) {
+            withContext(Dispatchers.IO) {
+                    artistRepository.refreshData(id).onSuccess {
+                        _artist.postValue(it)
+                        _eventNetworkError.postValue(false)
+                        _isNetworkErrorShown.postValue(false)
+                }.onFailure {
+                    Log.d("Error", it.toString())
+                    _eventNetworkError.postValue(true)
+                }
+            }
+        }
     }
 
     fun onNetworkErrorShown() {
