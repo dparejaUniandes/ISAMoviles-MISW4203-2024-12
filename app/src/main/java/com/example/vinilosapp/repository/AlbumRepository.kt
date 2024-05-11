@@ -5,21 +5,11 @@ import com.example.vinilosapp.broker.AlbumBroker
 import com.example.vinilosapp.models.Album
 
 class AlbumRepository(val application: Application){
-    fun refreshData(callback: (List<Album>)->Unit, onFailure: (String)->Unit) {
-        AlbumBroker.getInstance(application).getAlbums({
-            callback(it)
-        },
-            onFailure
-        )
+    suspend fun refreshData() : Result<List<Album>> {
+        return AlbumBroker.getInstance(application).getAlbums()
     }
 
-    fun refreshData(albumId: (Int), callback: (Album)->Unit, onFailure: (String)->Unit) {
-        AlbumBroker.getInstance(application).getAlbum(
-            albumId,
-            {
-            callback(it)
-            },
-            onFailure
-        )
+    suspend fun refreshData(albumId: (Int)) : Result<Album>{
+        return AlbumBroker.getInstance(application).getAlbum(albumId)
     }
 }
