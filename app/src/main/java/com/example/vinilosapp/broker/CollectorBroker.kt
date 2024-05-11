@@ -1,10 +1,7 @@
 package com.example.vinilosapp.broker
 
 import android.content.Context
-import android.util.Log
 import com.example.vinilosapp.models.Collector
-import retrofit2.Call
-import retrofit2.Callback
 import java.lang.Exception
 
 class CollectorBroker constructor(context: Context) {
