@@ -4,7 +4,7 @@ import android.content.Context
 import com.example.vinilosapp.models.Collector
 import java.lang.Exception
 
-class CollectorBroker constructor(context: Context) {
+class CollectorBroker(context: Context) {
     companion object{
         var instance: CollectorBroker? = null
         fun getInstance(context: Context) =
