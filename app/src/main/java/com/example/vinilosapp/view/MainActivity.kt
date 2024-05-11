@@ -31,29 +31,22 @@ class MainActivity : AppCompatActivity() {
             BottomNavigationView.OnNavigationItemSelectedListener { item: MenuItem ->
                 var selectedFragment: Fragment? = null
                 val itemId = item.itemId
-                if (itemId == R.id.albumFragment) {
-                    selectedFragment = AlbumFragment()
-                } else if (itemId == R.id.artistFragment) {
-                    selectedFragment = ArtistFragment()
-                } else if (itemId == R.id.collectorsFragment) {
-                    selectedFragment = CollectorFragment()
+                when (itemId) {
+                    R.id.albumFragment -> selectedFragment = AlbumFragment()
+                    R.id.artistFragment -> selectedFragment = ArtistFragment()
+                    R.id.collectorsFragment -> selectedFragment = CollectorFragment()
                 }
-                // It will help to replace the
-                // one fragment to other.
                 if (selectedFragment != null) {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.nav_host_fragment, selectedFragment).commit()
                 }
                 true
             }
-        val bottomNav : BottomNavigationView = findViewById(R.id.bottomNav);
-        bottomNav.setOnNavigationItemSelectedListener(navListener);
-
+        val bottomNav : BottomNavigationView = findViewById(R.id.bottomNav)
+        bottomNav.setOnNavigationItemSelectedListener(navListener)
         bottomNav.setOnNavigationItemSelectedListener { item ->
-            // In order to get the expected behavior, you have to call default Navigation method manually
             NavigationUI.onNavDestinationSelected(item, navController)
         }
-
     }
 
     override fun onSupportNavigateUp(): Boolean {
