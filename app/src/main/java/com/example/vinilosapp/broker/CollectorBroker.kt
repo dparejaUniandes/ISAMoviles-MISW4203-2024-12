@@ -16,11 +16,11 @@ class CollectorBroker(context: Context) {
     }
 
     suspend fun getCollectors() : Result<List<Collector>> {
-        try {
-            var collectors = VinilosApi.collectorService.getCollectors()
-            return Result.success(collectors)
+        return try {
+            val collectors = VinilosApi.collectorService.getCollectors()
+            Result.success(collectors)
         } catch (e : Exception) {
-            return Result.failure(e)
+            Result.failure(e)
         }
     }
 
