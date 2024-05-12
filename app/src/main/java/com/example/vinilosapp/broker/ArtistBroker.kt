@@ -1,14 +1,12 @@
 package com.example.vinilosapp.broker
 
 import android.content.Context
-import android.util.Log
 import com.example.vinilosapp.models.Artist
-import retrofit2.Call
-import retrofit2.Callback
+import java.lang.Exception
 
-class ArtistBroker constructor(context: Context) {
+class ArtistBroker(context: Context) {
     companion object{
-        var instance: ArtistBroker? = null
+        private var instance: ArtistBroker? = null
         fun getInstance(context: Context) =
             instance ?: synchronized(this) {
                 instance ?: ArtistBroker(context).also {
@@ -17,35 +15,21 @@ class ArtistBroker constructor(context: Context) {
             }
     }
 
-    fun getArtists(onResponse:(resp:List<Artist>)->Unit, onFailure:(resp:String)->Unit) {
-        var r = VinilosApi.artistService.getArtists()
-        var p = r.enqueue(
-            object : Callback<List<Artist>> {
-                override fun onFailure(call: Call<List<Artist>>, t: Throwable) {
-                    onFailure(t.message!!)
-                }
-
-                override fun onResponse(call: Call<List<Artist>>, response: retrofit2.Response<List<Artist>>) {
-                    Log.d("Body Artists", response.body().toString())
-                    onResponse(response.body()!!)
-
-                }
-            })
+    suspend fun getArtists() : Result<List<Artist>> {
+        return try {
+            val artists = VinilosApi.artistService.getArtists()
+            Result.success(artists)
+        } catch (e : Exception) {
+            Result.failure(e)
+        }
     }
 
-    fun getArtist(artistId : (Int), onResponse:(resp:Artist)->Unit, onFailure:(resp:String)->Unit) {
-        var r = VinilosApi.artistService.getArtist(artistId)
-        var p = r.enqueue(
-            object : Callback<Artist> {
-                override fun onFailure(call: Call<Artist>, t: Throwable) {
-                    onFailure(t.message!!)
-                }
-
-                override fun onResponse(call: Call<Artist>, response: retrofit2.Response<Artist>) {
-                    Log.d("Body Artist", response.body().toString())
-                    onResponse(response.body()!!)
-
-                }
-            })
+    suspend fun getArtist(artistId : (Int)) : Result<Artist> {
+        return try {
+            val artist = VinilosApi.artistService.getArtist(artistId)
+            Result.success(artist)
+        } catch (e : Exception) {
+            Result.failure(e)
+        }
     }
 }

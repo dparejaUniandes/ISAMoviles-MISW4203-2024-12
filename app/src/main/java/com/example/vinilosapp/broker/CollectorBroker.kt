@@ -1,14 +1,12 @@
 package com.example.vinilosapp.broker
 
 import android.content.Context
-import android.util.Log
 import com.example.vinilosapp.models.Collector
-import retrofit2.Call
-import retrofit2.Callback
+import java.lang.Exception
 
-class CollectorBroker constructor(context: Context) {
+class CollectorBroker(context: Context) {
     companion object{
-        var instance: CollectorBroker? = null
+        private var instance: CollectorBroker? = null
         fun getInstance(context: Context) =
             instance ?: synchronized(this) {
                 instance ?: CollectorBroker(context).also {
@@ -17,19 +15,13 @@ class CollectorBroker constructor(context: Context) {
             }
     }
 
-    fun getCollectors(onResponse:(resp:List<Collector>)->Unit, onFailure:(resp:String)->Unit) {
-        var r = VinilosApi.collectorService.getCollectors()
-        var p = r.enqueue(
-            object : Callback<List<Collector>> {
-                override fun onFailure(call: Call<List<Collector>>, t: Throwable) {
-                    onFailure(t.message!!)
-                }
-                override fun onResponse(call: Call<List<Collector>>, response: retrofit2.Response<List<Collector>>) {
-                    Log.d("Body Collectors", response.body().toString())
-                    onResponse(response.body()!!)
-
-                }
-            })
+    suspend fun getCollectors() : Result<List<Collector>> {
+        return try {
+            val collectors = VinilosApi.collectorService.getCollectors()
+            Result.success(collectors)
+        } catch (e : Exception) {
+            Result.failure(e)
+        }
     }
 
 }
