@@ -27,9 +27,6 @@
             android:name="albumId"
             app:argType="integer" />
         <action
-            android:id="@+id/action_albumFragment_to_commentFragment"
-            app:destination="@id/commentFragment" />
-        <action
             android:id="@+id/action_albumDetailFragment_to_albumFragment"
             app:destination="@id/albumFragment" />
     </fragment>
@@ -59,14 +56,5 @@
         android:name="com.example.vinilosapp.view.CollectorFragment"
         android:label="Colleccionistas"
         tools:layout="@layout/collector_fragment" >
-    </fragment>
-    <fragment
-        android:id="@+id/commentFragment"
-        android:name="com.example.vinilosapp.view.CommentFragment"
-        android:label="Comentarios"
-        tools:layout="@layout/comment_fragment" >
-        <argument
-            android:name="albumId"
-            app:argType="integer" />
     </fragment>
 </navigation>

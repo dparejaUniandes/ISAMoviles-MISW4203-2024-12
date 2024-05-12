@@ -1,19 +1,19 @@
 package com.example.vinilosapp.view.adapters
 
+import android.annotation.SuppressLint
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
 import com.example.vinilosapp.R
 import com.example.vinilosapp.databinding.CollectorItemBinding
 import com.example.vinilosapp.models.Collector
-import com.example.vinilosapp.view.AlbumFragmentDirections
 
 class CollectorsAdapter: RecyclerView.Adapter<CollectorsAdapter.CollectorViewHolder>(){
 
     var collectors :List<Collector> = emptyList()
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
             field = value
             notifyDataSetChanged()

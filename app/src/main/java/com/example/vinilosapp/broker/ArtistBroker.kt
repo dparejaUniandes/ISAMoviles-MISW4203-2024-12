@@ -1,15 +1,12 @@
 package com.example.vinilosapp.broker
 
 import android.content.Context
-import android.util.Log
 import com.example.vinilosapp.models.Artist
-import retrofit2.Call
-import retrofit2.Callback
 import java.lang.Exception
 
-class ArtistBroker constructor(context: Context) {
+class ArtistBroker(context: Context) {
     companion object{
-        var instance: ArtistBroker? = null
+        private var instance: ArtistBroker? = null
         fun getInstance(context: Context) =
             instance ?: synchronized(this) {
                 instance ?: ArtistBroker(context).also {
@@ -19,20 +16,20 @@ class ArtistBroker constructor(context: Context) {
     }
 
     suspend fun getArtists() : Result<List<Artist>> {
-        try {
+        return try {
             val artists = VinilosApi.artistService.getArtists()
-            return Result.success(artists)
+            Result.success(artists)
         } catch (e : Exception) {
-            return Result.failure(e)
+            Result.failure(e)
         }
     }
 
     suspend fun getArtist(artistId : (Int)) : Result<Artist> {
-        try {
+        return try {
             val artist = VinilosApi.artistService.getArtist(artistId)
-            return Result.success(artist)
+            Result.success(artist)
         } catch (e : Exception) {
-            return Result.failure(e)
+            Result.failure(e)
         }
     }
 }
