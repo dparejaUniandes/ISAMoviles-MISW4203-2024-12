@@ -6,7 +6,11 @@ import com.example.vinilosapp.models.Artist
 
 class CacheManager(context: Context) {
     companion object{
+<<<<<<< HEAD
         private var instance: CacheManager? = null
+=======
+        var instance: CacheManager? = null
+>>>>>>> ce07bc8312cb315ef38376dd194d7ef1b3a0e35b
         fun getInstance(context: Context) =
             instance ?: synchronized(this) {
                 instance ?: CacheManager(context).also {
