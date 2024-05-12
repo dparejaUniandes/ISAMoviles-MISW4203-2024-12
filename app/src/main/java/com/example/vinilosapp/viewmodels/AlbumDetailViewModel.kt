@@ -23,12 +23,12 @@ class AlbumDetailViewModel(application: Application, albumId: Int) :  AndroidVie
     val album: LiveData<Album>
         get() = _album
 
-    private var _eventNetworkError = MutableLiveData<Boolean>(false)
+    private var _eventNetworkError = MutableLiveData(false)
 
     val eventNetworkError: LiveData<Boolean>
         get() = _eventNetworkError
 
-    private var _isNetworkErrorShown = MutableLiveData<Boolean>(false)
+    private var _isNetworkErrorShown = MutableLiveData(false)
 
     val isNetworkErrorShown: LiveData<Boolean>
         get() = _isNetworkErrorShown
@@ -56,7 +56,7 @@ class AlbumDetailViewModel(application: Application, albumId: Int) :  AndroidVie
         _isNetworkErrorShown.value = true
     }
 
-    class Factory(val app: Application, val albumId: Int) : ViewModelProvider.Factory {
+    class Factory(val app: Application, private val albumId: Int) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(AlbumDetailViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
