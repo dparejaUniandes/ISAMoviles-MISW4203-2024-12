@@ -20,7 +20,7 @@ El backend de la aplicación se encuentra desplegado en un servidor en la nube. 
 
 A continuación se encuentra el APK de la aplicación, el cual podrás descargar haciendo clic en este enlace:
 
-* [app-vinilos-apk.zip](https://github.com/dparejaUniandes/ISAMoviles-MISW4203-2024-12/files/15144804/app-vinilos-apk.zip)
+* [app-vinilos-apk.zip](https://github.com/dparejaUniandes/ISAMoviles-MISW4203-2024-12/files/15288258/app-vinilos-apk.zip)
 
 Puedes importarlo en Android Studio siguiendo los pasos descritos en: [Instalar o adicionar archivos en el emulador](https://developer.android.com/studio/run/emulator-install-add-files)
 
