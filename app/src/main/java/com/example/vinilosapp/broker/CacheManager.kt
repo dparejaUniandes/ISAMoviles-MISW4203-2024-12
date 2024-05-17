@@ -11,8 +11,8 @@ class CacheManager(context: Context) {
             instance ?: synchronized(this) {
                 instance ?: CacheManager(context).also {
                     instance = it
+                }
             }
-        }
     }
     private var artistDetail: LruCache<Int, Artist> = LruCache(3)
     fun addArtistDetail(artistId: Int, artistDetailNew: Artist){
