@@ -7,11 +7,13 @@
     tools:context=".view.AlbumFragment"
     android:background="#FFFFFF">
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
+    <Button
+        android:id="@+id/create_album_button"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginBottom="8dp"
+        android:text="Agregar álbum" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/albumsRv"
@@ -22,6 +24,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="58dp"
         tools:context=".ui.AlbumFragment"
         tools:listitem="@layout/album_item" />
 
