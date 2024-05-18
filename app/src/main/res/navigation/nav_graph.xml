@@ -65,5 +65,8 @@
         android:name="com.example.vinilosapp.view.AlbumCreateFragment"
         android:label="@string/title_album_create"
         tools:layout="@layout/album_create_fragment" >
+        <action
+            android:id="@+id/action_albumCreateFragment_to_albumFragment"
+            app:destination="@id/albumFragment" />
     </fragment>
 </navigation>
