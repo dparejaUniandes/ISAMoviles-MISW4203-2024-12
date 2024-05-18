@@ -30,4 +30,12 @@
     <string name="home_page">Página de inicio</string>
     <string name="collector_image">Collector image</string>
     <string name="title_inicio">Inicio</string>
+    <string name="title_album_create">Nuevo Álbum</string>
+    <string name="album_name">Nombre</string>
+    <string name="cover_url">URL portada</string>
+    <string name="album_create_release_date">Fecha</string>
+    <string name="album_create_description">Descripción</string>
+    <string name="genre">Género</string>
+    <string name="album_create_record_label">Discografía</string>
+    <string name="album_create_button">Crear álbum</string>
 </resources>
