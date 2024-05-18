@@ -13,9 +13,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class AlbumCreateViewModel(application: Application, body: Map<String, String>) :  AndroidViewModel(application) {
+class AlbumCreateViewModel(application: Application) :  AndroidViewModel(application) {
 
-    private val bodyNewAlbum: Map<String, String> = body
     private val albumRepository = AlbumRepository(application)
 
     private var _eventNetworkError = MutableLiveData(false)
@@ -28,11 +27,7 @@ class AlbumCreateViewModel(application: Application, body: Map<String, String>) 
     val isNetworkErrorShown: LiveData<Boolean>
         get() = _isNetworkErrorShown
 
-    init {
-        refreshDataFromNetwork()
-    }
-
-    private fun refreshDataFromNetwork() {
+    public fun refreshDataFromNetwork(bodyNewAlbum: Map<String, String>) {
         viewModelScope.launch(Dispatchers.Default) {
             withContext(Dispatchers.IO) {
                 Log.d("Body in view model", bodyNewAlbum.toString())
@@ -52,11 +47,11 @@ class AlbumCreateViewModel(application: Application, body: Map<String, String>) 
         _isNetworkErrorShown.value = true
     }
 
-    class Factory(val app: Application, private val body: Map<String, String>) : ViewModelProvider.Factory {
+    class Factory(val app: Application ) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(AlbumCreateViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")
-                return AlbumCreateViewModel(app, body) as T
+                return AlbumCreateViewModel(app) as T
             }
             throw IllegalArgumentException("Unable to construct viewmodel")
         }

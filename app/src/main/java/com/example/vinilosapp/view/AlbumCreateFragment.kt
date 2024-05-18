@@ -50,6 +50,9 @@ class AlbumCreateFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val createButton: Button = requireView().findViewById(R.id.create_button)
+        val activity = requireNotNull(this.activity)
+        viewModel = ViewModelProvider(this, AlbumCreateViewModel.Factory(activity.application)).get(
+            AlbumCreateViewModel::class.java)
         createButton.setOnClickListener {
             Log.d("Button", "pressed")
             val nameTxt : TextInputEditText = view.findViewById(R.id.txt_post_name)
@@ -66,9 +69,7 @@ class AlbumCreateFragment : Fragment() {
                 "genre" to genreTxt.text.toString(),
                 "recordLabel" to recordLabelTxt.text.toString()
             )
-            val activity = requireNotNull(this.activity)
-            viewModel = ViewModelProvider(this, AlbumCreateViewModel.Factory(activity.application, postParams)).get(
-                AlbumCreateViewModel::class.java)
+            viewModel.refreshDataFromNetwork(postParams)
         }
     }
 
