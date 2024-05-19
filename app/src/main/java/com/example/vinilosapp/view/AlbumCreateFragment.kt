@@ -15,17 +15,6 @@ import com.example.vinilosapp.R
 import com.example.vinilosapp.viewmodels.AlbumCreateViewModel
 import com.google.android.material.textfield.TextInputEditText
 
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [AlbumCreateFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class AlbumCreateFragment : Fragment() {
     private lateinit var viewModel: AlbumCreateViewModel
     private var messageToDisplay : String = ""
@@ -33,9 +22,9 @@ class AlbumCreateFragment : Fragment() {
     private val possiblesRecordLabel = arrayOf("Sony Music", "EMI", "Discos Fuentes", "Elektra", "Fania Records")
     private var allFieldsAreValid : Boolean = true
     // yyyy-mm-dd
-    val dateRegex =
+    private val dateRegex =
         "([0-9]{4})[\\-](1[0-2]|0[1-9]|[1-9])[\\-](3[01]|[12][0-9]|0[1-9]|[1-9])$".toRegex()
-    var counterDialogPressButton : Int = 0
+    private var counterDialogPressButton : Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,7 +48,7 @@ class AlbumCreateFragment : Fragment() {
             val descriptionTxt : TextInputEditText = view.findViewById(R.id.txt_post_description)
             val genreTxt : TextInputEditText = view.findViewById(R.id.txt_post_genre)
             val recordLabelTxt : TextInputEditText = view.findViewById(R.id.txt_post_album_create_record_label)
-            val postParams = mapOf<String, String>(
+            val postParams = mapOf(
                 "name" to nameTxt.text.toString(),
                 "cover" to coverTxt.text.toString(),
                 "releaseDate" to dateTxt.text.toString(),
