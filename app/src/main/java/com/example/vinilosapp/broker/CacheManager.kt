@@ -49,13 +49,4 @@ class CacheManager(context: Context) {
     fun getArtistDetail(artistId: Int) : Artist {
         return if (artistDetail[artistId]!=null) artistDetail[artistId]!! else Artist(artistId=-1)
     }
-	
-	fun addCollectorDetail(collectorId: Int, collectorDetailNew: Collector){
-        if (collectorDetail[collectorId] == null){
-            collectorDetail.put(collectorId, collectorDetailNew)
-        }
-    }
-    fun getCollectorDetail(collectorId: Int) : Collector {
-        return if (collectorDetail[collectorId]!=null) collectorDetail[collectorId]!! else Collector(collectorId=-1)
-    }
 }

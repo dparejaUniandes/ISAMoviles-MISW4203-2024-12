@@ -31,6 +31,26 @@
             app:destination="@id/albumFragment" />
     </fragment>
     <fragment
+        android:id="@+id/trackFragment"
+        android:name="com.example.vinilosapp.view.TrackFragment"
+        android:label="@string/title_tracks"
+        tools:layout="@layout/track_fragment" >
+        <action
+            android:id="@+id/action_trackFragment_to_trackDetailFragment"
+            app:destination="@id/trackDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/trackDetailFragment"
+        android:name="com.example.vinilosapp.view.TrackDetailFragment"
+        tools:layout="@layout/track_detail_fragment" >
+        <argument
+            android:name="trackId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_trackDetailFragment_to_trackFragment"
+            app:destination="@id/trackFragment" />
+    </fragment>
+    <fragment
         android:id="@+id/artistFragment"
         android:name="com.example.vinilosapp.view.ArtistFragment"
         android:label="@string/title_artists"
