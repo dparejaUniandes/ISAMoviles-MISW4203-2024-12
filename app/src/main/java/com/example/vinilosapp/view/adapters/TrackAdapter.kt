@@ -40,12 +40,7 @@ class TracksAdapter : RecyclerView.Adapter<TracksAdapter.TrackViewHolder>(){
     override fun onBindViewHolder(holder: TrackViewHolder, position: Int) {
 
         holder.viewDataBinding.also {
-            it.track = tracks[position]
-            val imageView: ImageView =  holder.viewDataBinding.root.findViewById(R.id.headerImage)
-            Picasso.get()
-                .load(tracks[position].cover)
-                .memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE)
-                .into(imageView)
+            it.track = tracks[position]            
         }
         holder.viewDataBinding.root.setOnClickListener {
             val action = TrackFragmentDirections.actionTrackFragmentToTrackDetailFragment(tracks[position].trackId)
