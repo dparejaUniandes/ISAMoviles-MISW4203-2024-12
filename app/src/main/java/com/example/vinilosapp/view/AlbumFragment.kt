@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilosapp.R
@@ -39,6 +41,12 @@ class AlbumFragment : Fragment() {
         recyclerView = binding.albumsRv
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = viewModelAdapter
+        val postButton: Button = view.findViewById(R.id.create_album_button)
+        postButton.setOnClickListener {
+            val action = AlbumFragmentDirections.actionAlbumFragmentToAlbumCreateFragment()
+            // Navigate using that action
+            view.findNavController().navigate(action)
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
