@@ -19,6 +19,16 @@
         android:radius="22dp"
         tools:ignore="UseCompoundDrawables">
 
+        <ImageView
+            android:id="@+id/headerImage"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/collector"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/collector_image" />
+
         <TextView
             android:id="@+id/tv_collector_name"
             android:layout_width="wrap_content"
@@ -31,15 +41,6 @@
             android:textColorLink="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/headerImage"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:src="@drawable/collector"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/collector_image" />
+        
     </LinearLayout>
 </layout>

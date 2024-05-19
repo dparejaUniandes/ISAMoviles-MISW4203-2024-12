@@ -1,6 +1,7 @@
 package com.example.vinilosapp.broker
 
 import com.example.vinilosapp.service.AlbumService
+import com.example.vinilosapp.service.TrackService
 import com.example.vinilosapp.service.ArtistService
 import com.example.vinilosapp.service.CollectorService
 import retrofit2.Retrofit
@@ -18,6 +19,9 @@ object VinilosApi {
 
     val artistService : ArtistService by lazy {
         vinilosRetrofit.create(ArtistService::class.java) }
+		
+	val trackService : TrackService by lazy {
+        vinilosRetrofit.create(TrackService::class.java) }
 
     val collectorService : CollectorService by lazy {
         vinilosRetrofit.create(CollectorService::class.java) }
