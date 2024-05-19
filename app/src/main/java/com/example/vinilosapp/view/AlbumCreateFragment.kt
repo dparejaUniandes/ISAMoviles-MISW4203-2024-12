@@ -1,11 +1,13 @@
 package com.example.vinilosapp.view
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -26,10 +28,14 @@ private const val ARG_PARAM2 = "param2"
  */
 class AlbumCreateFragment : Fragment() {
     private lateinit var viewModel: AlbumCreateViewModel
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private var messageToDisplay : String = ""
+    private val possiblesGenres = arrayOf("Classical", "Salsa", "Rock", "Folk")
+    private val possiblesRecordLabel = arrayOf("Sony Music", "EMI", "Discos Fuentes", "Elektra", "Fania Records")
+    private var allFieldsAreValid : Boolean = true
+    // yyyy-mm-dd
+    val dateRegex =
+        "([0-9]{4})[\\-](1[0-2]|0[1-9]|[1-9])[\\-](3[01]|[12][0-9]|0[1-9]|[1-9])$".toRegex()
+    var counterDialogPressButton : Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -61,12 +67,66 @@ class AlbumCreateFragment : Fragment() {
                 "genre" to genreTxt.text.toString(),
                 "recordLabel" to recordLabelTxt.text.toString()
             )
-            viewModel.refreshDataFromNetwork(postParams)
 
-            Thread.sleep(2000)
-            val action = AlbumCreateFragmentDirections.actionAlbumCreateFragmentToAlbumFragment()
-            // Navigate using that action
-            view.findNavController().navigate(action)
+            validateFields(postParams)
+            Log.d("Message", messageToDisplay)
+            if (allFieldsAreValid) {
+                viewModel.refreshDataFromNetwork(postParams)
+                viewModel.eventNetworkError.observe(viewLifecycleOwner) { isNetworkError ->
+                    if (isNetworkError) {
+                        onNetworkError()
+                    } else {
+                        AlertDialog.Builder(context)
+                            .setTitle("Éxito")
+                            .setMessage(messageToDisplay)
+                            .setPositiveButton("OK") { dialog, whichButton ->
+                                dialog.dismiss()
+                                counterDialogPressButton++
+                                if (counterDialogPressButton >= 2) {
+                                    val action =
+                                        AlbumCreateFragmentDirections.actionAlbumCreateFragmentToAlbumFragment()
+                                    view.findNavController().navigate(action)
+                                }
+                            }.show()
+                    }
+                }
+            } else {
+                val builder: AlertDialog.Builder = AlertDialog.Builder(context)
+                builder
+                    .setMessage(messageToDisplay)
+                    .setTitle("Error")
+
+                val dialog: AlertDialog = builder.create()
+                dialog.show()
+            }
+        }
+    }
+
+    private fun validateFields(postParams : Map<String, String>) {
+        if (postParams["name"] == "" || postParams["cover"] == "" || postParams["releaseDate"] == ""
+            || postParams["description"] == "" || postParams["genre"] == "" || postParams["recordLabel"] == "") {
+            messageToDisplay = "Todos los campos son obligatorios"
+            allFieldsAreValid = false
+        } else if (!possiblesGenres.contains(postParams["genre"])) {
+            messageToDisplay = "Género no permitido, deben ser: [Classical, Salsa, Rock, Folk]"
+            allFieldsAreValid = false
+        } else if (!possiblesRecordLabel.contains(postParams["recordLabel"])) {
+            messageToDisplay = "Discografía no permitida, deben ser: [Sony Music, EMI, Discos Fuentes, Elektra, Fania Records]"
+            allFieldsAreValid = false
+        } else if (!dateRegex.containsMatchIn(postParams["releaseDate"]!!)) {
+            messageToDisplay = "Fecha no permitida, debe tener un formato yyyy-mm-dd"
+            allFieldsAreValid = false
+        } else {
+            messageToDisplay = "Álbum creado exitosamente"
+            allFieldsAreValid = true
+        }
+
+    }
+
+    private fun onNetworkError() {
+        if(!viewModel.isNetworkErrorShown.value!!) {
+            Toast.makeText(activity, "Network Error", Toast.LENGTH_LONG).show()
+            viewModel.onNetworkErrorShown()
         }
     }
 }

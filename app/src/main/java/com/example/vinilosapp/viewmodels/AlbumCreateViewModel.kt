@@ -27,7 +27,7 @@ class AlbumCreateViewModel(application: Application) :  AndroidViewModel(applica
     val isNetworkErrorShown: LiveData<Boolean>
         get() = _isNetworkErrorShown
 
-    public fun refreshDataFromNetwork(bodyNewAlbum: Map<String, String>) {
+    fun refreshDataFromNetwork(bodyNewAlbum: Map<String, String>) {
         viewModelScope.launch(Dispatchers.Default) {
             withContext(Dispatchers.IO) {
                 Log.d("Body in view model", bodyNewAlbum.toString())
