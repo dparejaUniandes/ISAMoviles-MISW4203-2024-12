@@ -30,6 +30,7 @@
     <string name="cover_album">Cover album</string>
     <string name="artist_image">Artist image</string>
     <string name="home_page">Página de inicio</string>
-    <string name="collector_image">Collector image</string>
+    <string name="collector_image">Imagen coleccionista</string>
+    <string name="track_image">Imagen canción</string>
     <string name="title_inicio">Inicio</string>
 </resources>
