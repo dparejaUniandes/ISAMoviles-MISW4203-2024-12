@@ -32,4 +32,19 @@ class AlbumBroker(context: Context) {
             Result.failure(e)
         }
     }
+
+    suspend fun postAlbum(body: Map<String, String>) : Result<Album>  {
+        return try {
+            Log.d("Body in broker", body.toString())
+            val album = VinilosApi.albumService.postAlbum(body["name"]!!,
+                body["cover"]!!,
+                body["releaseDate"]!!,
+                body["description"]!!,
+                body["genre"]!!,
+                body["recordLabel"]!!)
+            Result.success(album)
+        } catch (e : Exception) {
+            Result.failure(e)
+        }
+    }
 }
