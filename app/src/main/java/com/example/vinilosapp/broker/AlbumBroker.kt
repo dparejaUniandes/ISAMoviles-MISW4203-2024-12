@@ -1,6 +1,7 @@
 package com.example.vinilosapp.broker
 
 import android.content.Context
+import android.util.Log
 import com.example.vinilosapp.models.Album
 import java.lang.Exception
 
