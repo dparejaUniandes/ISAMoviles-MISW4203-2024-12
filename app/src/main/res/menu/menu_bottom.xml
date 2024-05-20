@@ -12,6 +12,11 @@
         android:title="@string/title_albums"/>
 
     <item
+        android:id="@+id/trackFragment"
+        android:icon="@drawable/icon_canciones"
+        android:title="@string/title_tracks"/>
+
+    <item
         android:id="@+id/artistFragment"
         android:icon="@drawable/icon_artistas"
         android:title="@string/title_artists"/>
