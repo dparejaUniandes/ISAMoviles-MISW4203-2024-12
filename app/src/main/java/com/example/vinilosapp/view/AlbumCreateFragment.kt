@@ -82,7 +82,7 @@ class AlbumCreateFragment : Fragment() {
             } else {
                 val builder: AlertDialog.Builder = AlertDialog.Builder(context)
                 builder
-                    .setMessage(messageToDisplay)
+                    .setMessage("$messageToDisplay\n(Selecciona por fuera del diálogo para volver a crear álbum)")
                     .setTitle("Error")
 
                 val dialog: AlertDialog = builder.create()
