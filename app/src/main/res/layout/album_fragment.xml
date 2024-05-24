@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.AlbumFragment"
-    android:background="#FFFFFF">
+    android:background="@color/white">
 
     <Button
         android:id="@+id/create_album_button"
@@ -19,7 +19,7 @@
         android:id="@+id/albumsRv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFFFFF"
+        android:background="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
