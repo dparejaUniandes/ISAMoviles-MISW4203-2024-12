@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="collector" type="com.example.vinilosapp.models.Collector"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/secondary"
+        android:elevation="0dp"
+        android:padding="0dp"
+        android:radius="0dp"
+        android:orientation="vertical"
+        android:layout_marginBottom="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/labelEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:paddingStart="8dp"
+                android:paddingTop="20dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="3dp"
+                android:text="@string/label_email"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/labelDynamicEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:paddingStart="8dp"
+                android:paddingTop="3dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="3dp"
+                android:text="@{collector.email}"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+        </LinearLayout>
+        <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="28dp"
+             android:orientation="horizontal">
+             <TextView
+                  android:id="@+id/labelPhone"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:fontFamily="@font/montserrat"
+                  android:paddingStart="8dp"
+                  android:paddingTop="3dp"
+                  android:paddingEnd="8dp"
+                  android:paddingBottom="3dp"
+                  android:text="@string/label_phone"
+                  android:textColor="@color/black"
+                  android:textSize="16sp"
+                  android:textStyle="bold" />
+            <TextView
+                  android:id="@+id/labelDynamicPhone"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:fontFamily="@font/montserrat"
+                  android:paddingStart="8dp"
+                  android:paddingTop="3dp"
+                  android:paddingEnd="16dp"
+                  android:paddingBottom="6dp"
+                  android:text="@{collector.telephone}"
+                  android:textColor="@color/black"
+                  android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>
