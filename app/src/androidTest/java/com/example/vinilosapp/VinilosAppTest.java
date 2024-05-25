@@ -128,5 +128,7 @@ public class VinilosAppTest {
     public void testTracks() throws InterruptedException {
         TracksTest tracksTest = new TracksTest();
         tracksTest.testViewTracksList();
+        tracksTest.testNavigateToTrackDetail();
+        tracksTest.testTrackDetailInformation();
     }
 }

@@ -53,4 +53,34 @@ public class TracksTest {
         Espresso.onView(withIndex(ViewMatchers.withId(R.id.headerImage), 0))
                 .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
     }
+
+    @Test
+    public void testNavigateToTrackDetail() throws InterruptedException {
+        // Navegar a la lista de canciones
+        testNavigateToTracksList();
+
+        // Desplazarse al primer elemento y hacer clic
+        Espresso.onView(ViewMatchers.withId(R.id.tracksRv))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(0, ViewActions.click()));
+
+        // Verificar que se muestra la pantalla de detalles de la canción
+        Espresso.onView(ViewMatchers.withId(R.id.trackRv))
+                .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
+    }
+
+    @Test
+    public void testTrackDetailInformation() throws InterruptedException {
+        // Navegar a la lista de canciones
+        testNavigateToTracksList();
+
+        // Desplazarse al primer elemento y hacer clic
+        Espresso.onView(ViewMatchers.withId(R.id.tracksRv))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(0, ViewActions.click()));
+
+        Thread.sleep(3000);
+
+        // Verificar que se muestra la duración de la canción
+        Espresso.onView(ViewMatchers.withId(R.id.textView1))
+                .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
+    }
 }
