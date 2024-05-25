@@ -65,7 +65,7 @@ public class AlbumCreateTest {
         Espresso.onView(ViewMatchers.withId(R.id.txt_post_name))
                 .perform(ViewActions.replaceText("Test Nuevo Álbum"));
         Espresso.onView(ViewMatchers.withId(R.id.txt_post_cover_url))
-                .perform(ViewActions.replaceText("https://example.com/dark_side_of_the_moon.jpg"));
+                .perform(ViewActions.replaceText("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/El_lado_oscuro_de_la_luna_-_The_dark_side_of_the_moon_-_Pink_Floyd_-_Vinyl.jpg/800px-El_lado_oscuro_de_la_luna_-_The_dark_side_of_the_moon_-_Pink_Floyd_-_Vinyl.jpg"));
         Espresso.onView(ViewMatchers.withId(R.id.txt_post_date))
                 .perform(ViewActions.replaceText("2023-06-08"));
         Espresso.onView(ViewMatchers.withId(R.id.txt_post_description))
