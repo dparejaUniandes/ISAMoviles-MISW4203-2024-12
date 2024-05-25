@@ -43,5 +43,8 @@
     <string name="album_create_button">Crear álbum</string>
     <string name="label_email">Correo eléctronico</string>
     <string name="label_phone">Teléfono</string>
+    <string name="associate_track">Asociar track</string>
     <string name="collector_image_in_associate">Collector Image in Associate</string>
+    <string name="label_duration">Duración</string>
+    <string name="btn_associate_track">Asociar Track</string>
 </resources>
