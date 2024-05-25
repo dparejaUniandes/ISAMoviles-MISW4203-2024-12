@@ -32,9 +32,7 @@ public class CollectorsTest {
         Espresso.onView(ViewMatchers.withId(R.id.collectorsFragment))
                 .perform(ViewActions.click());
 
-        // Verificar que el RecyclerView de coleccionistas se muestra
-        Espresso.onView(ViewMatchers.withId(R.id.collectorsRv))
-                .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
+        Thread.sleep(2000);
     }
 
     @Test
@@ -54,6 +52,38 @@ public class CollectorsTest {
                 .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
 
         Espresso.onView(withIndex(ViewMatchers.withId(R.id.headerImage), 0))
+                .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
+    }
+
+    @Test
+    public void testNavigateToCollectorDetail() throws InterruptedException {
+        // Navegar a la lista de coleccionistas
+        testNavigateToCollectorsList();
+
+        // Desplazarse al primer elemento y hacer clic
+        Espresso.onView(ViewMatchers.withId(R.id.collectorsRv))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(0, ViewActions.click()));
+
+        // Verificar que se muestra la pantalla de detalles del coleccionista
+        Espresso.onView(ViewMatchers.withId(R.id.collectorDetailRv))
+                .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
+    }
+
+    @Test
+    public void testCollectorDetailInformation() throws InterruptedException {
+        // Navegar a la lista de coleccionistas
+        testNavigateToCollectorsList();
+
+        // Desplazarse al primer elemento y hacer clic
+        Espresso.onView(ViewMatchers.withId(R.id.collectorsRv))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(0, ViewActions.click()));
+
+        // Verificar que se muestra el correo electrónico del coleccionista
+        Espresso.onView(ViewMatchers.withId(R.id.labelDynamicEmail))
+                .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
+
+        // Verificar que se muestra el teléfono del coleccionista
+        Espresso.onView(ViewMatchers.withId(R.id.labelDynamicPhone))
                 .check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
     }
 }

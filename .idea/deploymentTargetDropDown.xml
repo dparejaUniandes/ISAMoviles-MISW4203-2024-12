@@ -11,10 +11,10 @@
       <entry key="testArtists()">
         <State />
       </entry>
-      <entry key="testNavigateToArtistDetail()">
+      <entry key="testCollectors()">
         <State />
       </entry>
-      <entry key="testViewAlbumsList()">
+      <entry key="testNavigateToArtistDetail()">
         <State />
       </entry>
       <entry key="testViewArtistsList()">

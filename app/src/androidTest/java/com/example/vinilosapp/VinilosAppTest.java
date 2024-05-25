@@ -120,5 +120,7 @@ public class VinilosAppTest {
     public void testCollectors() throws InterruptedException {
         CollectorsTest collectorsTest = new CollectorsTest();
         collectorsTest.testViewCollectorsList();
+        collectorsTest.testNavigateToCollectorDetail();
+        collectorsTest.testCollectorDetailInformation();
     }
 }
