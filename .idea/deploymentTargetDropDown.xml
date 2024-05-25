@@ -8,13 +8,13 @@
       <entry key="app">
         <State />
       </entry>
-      <entry key="testArtists()">
-        <State />
-      </entry>
       <entry key="testCollectors()">
         <State />
       </entry>
       <entry key="testNavigateToArtistDetail()">
+        <State />
+      </entry>
+      <entry key="testTracks()">
         <State />
       </entry>
       <entry key="testViewArtistsList()">

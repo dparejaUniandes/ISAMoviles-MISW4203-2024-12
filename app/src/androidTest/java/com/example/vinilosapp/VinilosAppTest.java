@@ -123,4 +123,10 @@ public class VinilosAppTest {
         collectorsTest.testNavigateToCollectorDetail();
         collectorsTest.testCollectorDetailInformation();
     }
+
+    @Test
+    public void testTracks() throws InterruptedException {
+        TracksTest tracksTest = new TracksTest();
+        tracksTest.testViewTracksList();
+    }
 }
