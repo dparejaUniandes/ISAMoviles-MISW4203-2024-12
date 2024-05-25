@@ -79,6 +79,18 @@
         android:name="com.example.vinilosapp.view.CollectorFragment"
         android:label="Colleccionistas"
         tools:layout="@layout/collector_fragment" >
+        <action
+            android:id="@+id/action_collectorsFragment_to_collectorDetailFragment"
+            app:destination="@id/collectorDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/collectorDetailFragment"
+        android:name="com.example.vinilosapp.view.CollectorDetailFragment"
+        android:label="Coleccionista"
+        tools:layout="@layout/collector_detail_fragment" >
+        <argument
+            android:name="collectorId"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/albumCreateFragment"
