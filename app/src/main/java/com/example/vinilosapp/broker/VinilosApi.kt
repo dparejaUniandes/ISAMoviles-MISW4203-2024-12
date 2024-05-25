@@ -7,7 +7,7 @@ import com.example.vinilosapp.service.CollectorService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-private const val BASE_URL = "http://146.148.71.23:3000"
+private const val BASE_URL = "http://35.193.110.65:3000"
 
 private val vinilosRetrofit = Retrofit.Builder()
     .addConverterFactory(GsonConverterFactory.create())
