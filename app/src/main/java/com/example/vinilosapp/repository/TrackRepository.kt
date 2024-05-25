@@ -12,4 +12,8 @@ class TrackRepository(val application: Application){
     suspend fun refreshData(trackId: (Int)) : Result<Track>{
         return TrackBroker.getInstance(application).getTrack(trackId)
     }
+
+    suspend fun refreshData(albumId: (Int), name: (String), duration: (String)) : Result<Track>{
+        return TrackBroker.getInstance(application).associateTrack(albumId, name, duration)
+    }
 }
