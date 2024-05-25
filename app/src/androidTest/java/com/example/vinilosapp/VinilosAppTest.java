@@ -120,5 +120,26 @@ public class VinilosAppTest {
     public void testCollectors() throws InterruptedException {
         CollectorsTest collectorsTest = new CollectorsTest();
         collectorsTest.testViewCollectorsList();
+        collectorsTest.testNavigateToCollectorDetail();
+        collectorsTest.testCollectorDetailInformation();
+    }
+
+    @Test
+    public void testTracks() throws InterruptedException {
+        TracksTest tracksTest = new TracksTest();
+        tracksTest.testViewTracksList();
+        tracksTest.testNavigateToTrackDetail();
+        tracksTest.testTrackDetailInformation();
+    }
+
+    @Test
+    public void testCreateAlbum() throws InterruptedException {
+        AlbumCreateTest albumCreateTest = new AlbumCreateTest();
+        albumCreateTest.testCreateAlbum();
+    }
+    @Test
+    public void testAssociateTrack() throws InterruptedException {
+        TrackAssociateTest trackAssociateTest = new TrackAssociateTest();
+        trackAssociateTest.testAssociateTrack();
     }
 }
