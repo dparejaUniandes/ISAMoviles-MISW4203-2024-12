@@ -24,4 +24,12 @@ class CollectorBroker(context: Context) {
         }
     }
 
+    suspend fun getCollector(collectorId : (Int)) : Result<Collector>  {
+        return try {
+            val collector = VinilosApi.collectorService.getCollector(collectorId)
+            Result.success(collector)
+        } catch (e : Exception) {
+            Result.failure(e)
+        }
+    }
 }

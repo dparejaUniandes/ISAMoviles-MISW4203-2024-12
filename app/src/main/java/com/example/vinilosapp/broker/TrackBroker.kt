@@ -32,4 +32,15 @@ class TrackBroker(context: Context) {
             Result.failure(e)
         }
     }
+
+    suspend fun associateTrack(albumId: (Int), name: (String), duration: (String)) : Result<Track>  {
+        return try {
+            val track = VinilosApi.trackService.associateTrack(albumId,
+                name,
+                duration)
+            Result.success(track)
+        } catch (e : Exception) {
+            Result.failure(e)
+        }
+    }
 }

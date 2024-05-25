@@ -2,12 +2,16 @@ package com.example.vinilosapp.view.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilosapp.R
 import com.example.vinilosapp.databinding.AlbumDetailItemBinding
 import com.example.vinilosapp.models.Album
+import com.example.vinilosapp.view.AlbumDetailFragmentDirections
+import com.example.vinilosapp.view.CollectorFragmentDirections
 
 class AlbumDetailAdapter : RecyclerView.Adapter<AlbumDetailAdapter.AlbumDetailViewHolder>() {
 
@@ -41,5 +45,12 @@ class AlbumDetailAdapter : RecyclerView.Adapter<AlbumDetailAdapter.AlbumDetailVi
         holder.viewDataBinding.also {
             it.album = album
         }
+        val action = AlbumDetailFragmentDirections
+                .actionAlbumDetailFragmentToTrackAssociateFragment(album.albumId)
+        val postButton = holder.viewDataBinding.root.findViewById<Button>(R.id.associate_track_album_button)
+        postButton.setOnClickListener {
+             holder.viewDataBinding.root.findNavController().navigate(action)
+        }
+
     }
 }

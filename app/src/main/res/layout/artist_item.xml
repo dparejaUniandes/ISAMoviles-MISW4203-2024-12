@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#F8F8F8"
+        android:background="@color/backgroundColorList"
         android:elevation="4dp"
         android:padding="16dp"
         android:radius="4dp">
@@ -20,13 +20,13 @@
             android:layout_height="wrap_content"
             android:elevation="1000dp"
             android:radius="22dp"
-            app:cardBackgroundColor="#FFFFFF"
+            app:cardBackgroundColor="@color/white"
             android:translationZ="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:strokeColor="#F8F8F8"
+            app:strokeColor="@color/backgroundColorList"
             app:strokeWidth="4dp">
 
             <LinearLayout
