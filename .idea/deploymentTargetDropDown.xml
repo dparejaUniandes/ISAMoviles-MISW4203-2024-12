@@ -2,22 +2,22 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="VinilosAppTest">
-        <State />
-      </entry>
       <entry key="app">
         <State />
       </entry>
       <entry key="testCollectors()">
         <State />
       </entry>
-      <entry key="testNavigateToArtistDetail()">
+      <entry key="testCreateAlbum()">
+        <State />
+      </entry>
+      <entry key="testCreateAlbum() (1)">
+        <State />
+      </entry>
+      <entry key="testErrorOnCreateAlbum()">
         <State />
       </entry>
       <entry key="testTracks()">
-        <State />
-      </entry>
-      <entry key="testViewArtistsList()">
         <State />
       </entry>
     </value>

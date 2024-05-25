@@ -131,4 +131,10 @@ public class VinilosAppTest {
         tracksTest.testNavigateToTrackDetail();
         tracksTest.testTrackDetailInformation();
     }
+
+    @Test
+    public void testCreateAlbum() {
+        AlbumCreateTest albumCreateTest = new AlbumCreateTest();
+        albumCreateTest.testCreateAlbum();
+    }
 }
