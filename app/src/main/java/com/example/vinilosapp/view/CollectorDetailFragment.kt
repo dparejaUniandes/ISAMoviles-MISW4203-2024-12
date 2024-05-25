@@ -2,44 +2,40 @@ package com.example.vinilosapp.view
 
 import android.os.Bundle
 import android.util.Log
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.vinilosapp.R
-import com.example.vinilosapp.databinding.AlbumDetailFragmentBinding
-import com.example.vinilosapp.view.adapters.AlbumDetailAdapter
-import com.example.vinilosapp.viewmodels.AlbumDetailViewModel
+import com.example.vinilosapp.viewmodels.CollectorDetailViewModel
+import com.example.vinilosapp.databinding.CollectorDetailFragmentBinding
+import com.example.vinilosapp.view.adapters.CollectorDetailAdapter
+import com.example.vinilosapp.viewmodels.ArtistDetailViewModel
 
+class CollectorDetailFragment : Fragment() {
 
-class AlbumDetailFragment : Fragment() {
-    private var _binding: AlbumDetailFragmentBinding? = null
+    private var _binding: CollectorDetailFragmentBinding? = null
     private val binding get() = _binding!!
-    private lateinit var viewModel: AlbumDetailViewModel
+    private lateinit var viewModel: CollectorDetailViewModel
     private lateinit var recyclerView: RecyclerView
-    private var viewModelAdapter: AlbumDetailAdapter? = null
-
-
+    private var viewModelAdapter: CollectorDetailAdapter? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = AlbumDetailFragmentBinding.inflate(inflater, container, false)
-        viewModelAdapter = AlbumDetailAdapter()
+        _binding = CollectorDetailFragmentBinding.inflate(inflater, container, false)
+        viewModelAdapter = CollectorDetailAdapter()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        recyclerView = binding.albumRv
+        recyclerView = binding.collectorDetailRv
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = viewModelAdapter
     }
@@ -47,15 +43,16 @@ class AlbumDetailFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         val activity = requireNotNull(this.activity)
-        val args: AlbumDetailFragmentArgs by navArgs()
-        Log.d("Args", args.albumId.toString())
-        viewModel = ViewModelProvider(this, AlbumDetailViewModel.Factory(activity.application, args.albumId)).get(
-            AlbumDetailViewModel::class.java)
-        viewModel.album.observe(viewLifecycleOwner) {
+        val args: CollectorDetailFragmentArgs by navArgs()
+        Log.d("Args", args.collectorId.toString())
+        viewModel =
+            ViewModelProvider(this, CollectorDetailViewModel.Factory(activity.application, args.collectorId)).get(
+                    CollectorDetailViewModel::class.java)
+        viewModel.collector.observe(viewLifecycleOwner) {
             it.apply {
-                if (this.albumId == albumId) {
-                    viewModelAdapter!!.album = this
-                    (getActivity() as AppCompatActivity?)!!.supportActionBar!!.title = this.name
+                if (this.collectorId == collectorId) {
+                    viewModelAdapter!!.collector = this
+                    (getActivity() as AppCompatActivity?)!!.supportActionBar!!.title = "Asociar Track"
                 }
             }
         }
@@ -63,6 +60,7 @@ class AlbumDetailFragment : Fragment() {
             if (isNetworkError) onNetworkError()
         }
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
