@@ -1,14 +1,11 @@
 package com.example.vinilosapp.view
 
-import android.R
 import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
 import android.widget.Toast
@@ -17,12 +14,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vinilosapp.databinding.TrackAssociateFragmentBinding
-import com.example.vinilosapp.models.Track
-import com.example.vinilosapp.view.adapters.TrackAssociateAdapter
-import com.example.vinilosapp.viewmodels.AlbumCreateViewModel
 import com.example.vinilosapp.viewmodels.TrackAssociateViewModel
 import com.google.android.material.textfield.TextInputEditText
 
@@ -31,7 +24,6 @@ class TrackAssociateFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var viewModel: TrackAssociateViewModel
     private lateinit var recyclerView: RecyclerView
-    private var viewModelAdapter: TrackAssociateAdapter? = null
     private lateinit var spinner: Spinner
     private var counterDialogPressButton : Int = 0
     private var allFieldsAreValid : Boolean = true
@@ -43,7 +35,6 @@ class TrackAssociateFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = TrackAssociateFragmentBinding.inflate(inflater, container, false)
-        viewModelAdapter = TrackAssociateAdapter()
         return binding.root
     }
 
@@ -117,7 +108,6 @@ class TrackAssociateFragment : Fragment() {
         viewModel.albumTrack.observe(viewLifecycleOwner) {
             it.apply {
                 if (this.albumId == albumId) {
-                    viewModelAdapter!!.albumTrack = this
                     (getActivity() as AppCompatActivity?)!!.supportActionBar!!.title = this.name
                 }
             }
