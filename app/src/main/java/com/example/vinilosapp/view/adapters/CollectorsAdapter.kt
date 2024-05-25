@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.example.vinilosapp.R
 import com.example.vinilosapp.databinding.CollectorItemBinding
+import com.example.vinilosapp.view.CollectorFragmentDirections
 import com.example.vinilosapp.models.Collector
 
 class CollectorsAdapter: RecyclerView.Adapter<CollectorsAdapter.CollectorViewHolder>(){
@@ -38,6 +40,11 @@ class CollectorsAdapter: RecyclerView.Adapter<CollectorsAdapter.CollectorViewHol
 
         holder.viewDataBinding.also {
             it.collector = collectors[position]
+        }
+        holder.viewDataBinding.root.setOnClickListener {
+            val action = CollectorFragmentDirections.actionCollectorsFragmentToCollectorDetailFragment(collectors[position].collectorId)
+            // Navigate using that action
+            holder.viewDataBinding.root.findNavController().navigate(action)
         }
     }
 
