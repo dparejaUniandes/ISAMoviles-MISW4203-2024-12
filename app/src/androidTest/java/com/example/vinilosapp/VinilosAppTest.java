@@ -133,8 +133,13 @@ public class VinilosAppTest {
     }
 
     @Test
-    public void testCreateAlbum() {
+    public void testCreateAlbum() throws InterruptedException {
         AlbumCreateTest albumCreateTest = new AlbumCreateTest();
         albumCreateTest.testCreateAlbum();
+    }
+    @Test
+    public void testAssociateTrack() throws InterruptedException {
+        TrackAssociateTest trackAssociateTest = new TrackAssociateTest();
+        trackAssociateTest.testAssociateTrack();
     }
 }
